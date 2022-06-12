@@ -23,7 +23,7 @@ End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
 	'Do not forget to load the layout file created with the visual designer. For example:
-	'Activity.LoadLayout("Layout1")
+	Activity.LoadLayout("home_layout")
 
 End Sub
 

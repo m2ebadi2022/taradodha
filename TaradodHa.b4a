@@ -48,6 +48,10 @@ End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
 	Activity.LoadLayout("main_layout")
+	
+	
+	StartActivity(home_activity)
+	Activity.Finish
 End Sub
 
 Sub Activity_Resume
