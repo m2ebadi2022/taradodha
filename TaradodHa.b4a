@@ -1,25 +1,31 @@
-﻿Build1=Default,b4a.example
+﻿Build1=Default,ir.taravatgroup.taradodha
 File1=add_layout.bal
 File2=home_layout.bal
-File3=list_layout.bal
-File4=main_layout.bal
+File3=irem_data.bal
+File4=list_layout.bal
+File5=main_layout.bal
 FileGroup1=Default Group
 FileGroup2=Default Group
 FileGroup3=Default Group
 FileGroup4=Default Group
+FileGroup5=Default Group
 Group=Default Group
 Library1=core
 Library2=manampersiandate
 Library3=sql
-Library4=xcustomlistview
+Library4=stringfunctions
+Library5=xcustomlistview
+Library6=xui
+Library7=dateutils
 ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="14" android:targetSdkVersion="30"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~CreateResourceFromFile(Macro, Themes.LightTheme)~\n~'End of default text.~\n~
 Module1=add_activity
 Module2=home_activity
 Module3=list_activity
-Module4=Starter
-NumberOfFiles=4
-NumberOfLibraries=4
-NumberOfModules=4
+Module4=myFunc
+Module5=Starter
+NumberOfFiles=5
+NumberOfLibraries=7
+NumberOfModules=5
 Version=11.5
 @EndOfDesignText@
 #Region  Project Attributes 
@@ -37,7 +43,8 @@ Version=11.5
 #End Region
 
 Sub Process_Globals
-	
+	Dim sql As SQL
+	Dim res As ResultSet
 	
 End Sub
 

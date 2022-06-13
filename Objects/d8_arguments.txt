@@ -1,0 +1,49 @@
+--release
+--output
+E:\b4a\b4a new projects\TaradodHa\Objects
+--lib
+D:\androidsdk\platforms\android-31\android.jar
+D:\androidsdk\tools\..\extras\b4a_local\unpacked-b4ashared-63783445550000\dex_v1\b4ashared.zip
+D:\androidsdk\tools\..\extras\b4a_local\unpacked-core-63783445550000\dex_v1\core.zip
+D:\androidsdk\tools\..\extras\b4a_local\unpacked-manampersiandate-63538368788692\dex_v1\manampersiandate.zip
+D:\androidsdk\tools\..\extras\b4a_local\unpacked-sql-63783445550000\dex_v1\sql.zip
+D:\androidsdk\tools\..\extras\b4a_local\unpacked-stringfunctions-63530416118000\dex_v1\stringfunctions.zip
+D:\androidsdk\tools\..\extras\b4a_local\unpacked-xcustomlistview-63783445550000\dex_v1\xcustomlistview.zip
+D:\androidsdk\tools\..\extras\b4a_local\unpacked-xui-63783445550000\dex_v1\xui.zip
+D:\androidsdk\tools\..\extras\b4a_local\unpacked-dateutils-63783445550000\dex_v1\dateutils.zip
+D:\androidsdk\tools\..\extras\b4a_local\unpacked-stringutils-63783445550000\dex_v1\stringutils.zip
+D:\androidsdk\tools\..\extras\b4a_local\unpacked-javaobject-63783445550000\dex_v1\javaobject.zip
+E:\b4a\b4a new projects\TaradodHa\Objects\dexed\ir\taravatgroup\taradodha\add_activity$1.dex
+E:\b4a\b4a new projects\TaradodHa\Objects\dexed\ir\taravatgroup\taradodha\add_activity$B4AMenuItemsClickListener.dex
+E:\b4a\b4a new projects\TaradodHa\Objects\dexed\ir\taravatgroup\taradodha\add_activity$HandleKeyDelayed.dex
+E:\b4a\b4a new projects\TaradodHa\Objects\dexed\ir\taravatgroup\taradodha\add_activity$ResumeMessage.dex
+E:\b4a\b4a new projects\TaradodHa\Objects\dexed\ir\taravatgroup\taradodha\add_activity$WaitForLayout.dex
+E:\b4a\b4a new projects\TaradodHa\Objects\dexed\ir\taravatgroup\taradodha\add_activity.dex
+E:\b4a\b4a new projects\TaradodHa\Objects\dexed\ir\taravatgroup\taradodha\home_activity$1.dex
+E:\b4a\b4a new projects\TaradodHa\Objects\dexed\ir\taravatgroup\taradodha\home_activity$B4AMenuItemsClickListener.dex
+E:\b4a\b4a new projects\TaradodHa\Objects\dexed\ir\taravatgroup\taradodha\home_activity$HandleKeyDelayed.dex
+E:\b4a\b4a new projects\TaradodHa\Objects\dexed\ir\taravatgroup\taradodha\home_activity$ResumeMessage.dex
+E:\b4a\b4a new projects\TaradodHa\Objects\dexed\ir\taravatgroup\taradodha\home_activity$WaitForLayout.dex
+E:\b4a\b4a new projects\TaradodHa\Objects\dexed\ir\taravatgroup\taradodha\home_activity.dex
+E:\b4a\b4a new projects\TaradodHa\Objects\dexed\ir\taravatgroup\taradodha\list_activity$1.dex
+E:\b4a\b4a new projects\TaradodHa\Objects\dexed\ir\taravatgroup\taradodha\list_activity$B4AMenuItemsClickListener.dex
+E:\b4a\b4a new projects\TaradodHa\Objects\dexed\ir\taravatgroup\taradodha\list_activity$HandleKeyDelayed.dex
+E:\b4a\b4a new projects\TaradodHa\Objects\dexed\ir\taravatgroup\taradodha\list_activity$ResumeMessage.dex
+E:\b4a\b4a new projects\TaradodHa\Objects\dexed\ir\taravatgroup\taradodha\list_activity$WaitForLayout.dex
+E:\b4a\b4a new projects\TaradodHa\Objects\dexed\ir\taravatgroup\taradodha\list_activity.dex
+E:\b4a\b4a new projects\TaradodHa\Objects\dexed\ir\taravatgroup\taradodha\main$1.dex
+E:\b4a\b4a new projects\TaradodHa\Objects\dexed\ir\taravatgroup\taradodha\main$B4AMenuItemsClickListener.dex
+E:\b4a\b4a new projects\TaradodHa\Objects\dexed\ir\taravatgroup\taradodha\main$HandleKeyDelayed.dex
+E:\b4a\b4a new projects\TaradodHa\Objects\dexed\ir\taravatgroup\taradodha\main$ResumeMessage.dex
+E:\b4a\b4a new projects\TaradodHa\Objects\dexed\ir\taravatgroup\taradodha\main$WaitForLayout.dex
+E:\b4a\b4a new projects\TaradodHa\Objects\dexed\ir\taravatgroup\taradodha\main.dex
+E:\b4a\b4a new projects\TaradodHa\Objects\dexed\ir\taravatgroup\taradodha\myfunc.dex
+E:\b4a\b4a new projects\TaradodHa\Objects\dexed\ir\taravatgroup\taradodha\R$drawable.dex
+E:\b4a\b4a new projects\TaradodHa\Objects\dexed\ir\taravatgroup\taradodha\R$style.dex
+E:\b4a\b4a new projects\TaradodHa\Objects\dexed\ir\taravatgroup\taradodha\R.dex
+E:\b4a\b4a new projects\TaradodHa\Objects\dexed\ir\taravatgroup\taradodha\starter$1.dex
+E:\b4a\b4a new projects\TaradodHa\Objects\dexed\ir\taravatgroup\taradodha\starter$2.dex
+E:\b4a\b4a new projects\TaradodHa\Objects\dexed\ir\taravatgroup\taradodha\starter$starter_BR.dex
+E:\b4a\b4a new projects\TaradodHa\Objects\dexed\ir\taravatgroup\taradodha\starter.dex
+E:\b4a\b4a new projects\TaradodHa\Objects\dexed\ir\taravatgroup\taradodha\designerscripts\LS_home_layout.dex
+E:\b4a\b4a new projects\TaradodHa\Objects\dexed\ir\taravatgroup\taradodha\designerscripts\LS_main_layout.dex

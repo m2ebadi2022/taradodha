@@ -34,3 +34,9 @@ End Sub
 Sub Activity_Pause (UserClosed As Boolean)
 
 End Sub
+
+
+Private Sub lbl_back_Click
+	StartActivity(home_activity)
+	Activity.Finish
+End Sub

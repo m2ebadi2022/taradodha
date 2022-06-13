@@ -34,3 +34,14 @@ End Sub
 Sub Activity_Pause (UserClosed As Boolean)
 
 End Sub
+
+
+Private Sub add_page_Click
+	StartActivity(add_activity)
+	'Activity.Finish
+End Sub
+
+Private Sub list_page_Click
+	StartActivity(list_activity)
+	'Activity.Finish
+End Sub
