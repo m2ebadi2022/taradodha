@@ -16,6 +16,6 @@ ModuleClosedNodes2=
 ModuleClosedNodes3=
 ModuleClosedNodes4=
 ModuleClosedNodes5=1
-NavigationStack=myFunc,fa2en,35,0,myFunc,add_taradod,43,6,add_activity,Activity_Create,40,6,myFunc,get_data,28,6,Visual Designer,add_layout.bal,-100,2,Visual Designer,irem_data.bal,-100,5,add_activity,Globals,33,0,add_activity,fill_list,69,6,add_activity,lbl_edit_item_Click,126,5,add_activity,lbl_save_Click,109,6
+NavigationStack=add_activity,lbl_khoroj_tap_Click,140,0,add_activity,lbl_vorod_tap_Click,150,0,add_activity,show_tim_lbl2,129,0,myFunc,get_by_id,27,1,add_activity,lbl_edit_item_Click,183,6,add_activity,lbl_save_edit_Click,194,0,add_activity,lbl_vorod_time_Click,226,6,add_activity,lbl_khoroj_time_Click,243,2,add_activity,lbl_khoroj_time_edit_Click,216,1,add_activity,lbl_vorod_time_edit_Click,205,3
 SelectedBuild=0
 VisibleModules=5,2,1,3,4

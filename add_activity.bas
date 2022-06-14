@@ -12,8 +12,7 @@ Version=11.5
 Sub Process_Globals
 	'These global variables will be declared once when the application starts.
 	'These variables can be accessed from all modules.
-Dim prsianDate As ManamPersianDate
-	Dim strfun As StringFunctions
+
 End Sub
 
 Sub Globals
@@ -35,18 +34,30 @@ Sub Globals
 	Private lbl_tozih_item As Label
 	
 	
-	Dim h_bt As Int=0
-	Dim m_bt As Int=0
+	
 	Private lbl_edit_item As Label
+	Private lbl_show_time As Label
+	Private pan_all_edit As Panel
+	Private et_date_edit As EditText
+	Private et_tozih_edit As EditText
+	Private lbl_khoroj_time_edit As Label
+	Private lbl_vorod_time_edit As Label
+	Private lbl_show_time_edit As Label
+	
+	Dim current_id As Int=0
+	
+	Dim dialog_tim As TimeDialog
+	
+	
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
 	'Do not forget to load the layout file created with the visual designer. For example:
 	Activity.LoadLayout("add_layout")
-	et_date.Text=prsianDate.PersianShortDate
+	et_date.Text=Main.prsianDate.PersianShortDate
 	
 	fill_list("1401","03")
-	
+	dialog_tim.Is24Hours=True
 End Sub
 
 Sub fill_list(sal As String , mah As String)
@@ -108,20 +119,44 @@ End Sub
 
 Private Sub lbl_save_Click
 	
+	Dim res_H_M As List =myFunc.time_show2(et_date.Text,lbl_vorod_time.Text,lbl_khoroj_time.Text)
 	
-	time_show2(et_date.Text,lbl_vorod_time.Text,lbl_khoroj_time.Text)
 	
-	myFunc.add_taradod(et_date.Text,lbl_vorod_time.Text,lbl_khoroj_time.Text,h_bt,m_bt,et_tozih.Text,0)
+	myFunc.add_taradod(et_date.Text,lbl_vorod_time.Text,lbl_khoroj_time.Text,res_H_M.Get(0),res_H_M.Get(1),et_tozih.Text,0)
 	fill_list("1401","03")
 	et_tozih.Text=""
 End Sub
 
+Sub show_tim_lbl1
+	Dim res_H_M As List =myFunc.time_show2(et_date.Text,lbl_vorod_time.Text,lbl_khoroj_time.Text)
+	lbl_show_time.Text=""&res_H_M.Get(0)&" و "&res_H_M.Get(1)&"دقیقه "
+End Sub
+
+
+Sub show_tim_lbl2
+Dim res_H_M As List =myFunc.time_show2(et_date_edit.Text,lbl_vorod_time_edit.Text,lbl_khoroj_time_edit.Text)
+	lbl_show_time_edit.Text=""&res_H_M.Get(0)&" و "&res_H_M.Get(1)&"دقیقه "
+End Sub
+
+
 Private Sub lbl_khoroj_tap_Click
-	lbl_khoroj_time.Text=DateTime.Time(DateTime.Now)
+	Dim tim_str As String=""
+	tim_str=DateTime.Time(DateTime.Now).SubString2(0,5)
+	lbl_khoroj_time.Text=tim_str
+	
+	show_tim_lbl1
+	
 End Sub
 
 Private Sub lbl_vorod_tap_Click
-	lbl_vorod_time.Text=DateTime.Time(DateTime.Now)
+	Dim tim_str1 As String=""
+	tim_str1=DateTime.Time(DateTime.Now).SubString2(0,5)
+	lbl_vorod_time.Text=tim_str1
+	
+	
+	show_tim_lbl1
+	
+	
 End Sub
 
 
@@ -129,98 +164,113 @@ End Sub
 Private Sub lbl_edit_item_Click
 	Dim lb As Label=Sender
 	
+	current_id=lb.Tag
 	
 	
-	Log(lb.Tag)
+	
+	
+	
+	Dim list_rec As List=myFunc.get_by_id(current_id)
+	
+	
+	
+	'list_rec.Get(0)
+	et_date_edit.Text=list_rec.Get(1)
+	lbl_vorod_time_edit.Text=list_rec.Get(2)
+	lbl_khoroj_time_edit.Text=list_rec.Get(3)
+	
+	
+	'list_rec.Get(4)
+	'list_rec.Get(5)
+	
+	et_tozih_edit.Text=list_rec.Get(6)
+	
+	show_tim_lbl2
+
+pan_all_edit.Visible=True
+	
 End Sub
 
 
 
-Sub time_show2 (dat1 As String, tim1 As String,tim2 As String) 
-	
-	Try
-	
-	
-		Dim list_date_per1 , list_date_per2 As List
-		Dim list_date_miladi1 ,list_date_miladi2 As List
-		Dim dat_mil_2 As String
-		Dim dat_mil_1 As String
-	
-		list_date_per1.Initialize
-		list_date_per2.Initialize
-		list_date_miladi1.Initialize
-		list_date_miladi1.Initialize
-	
-		
-		
-		
-	
-		
-		list_date_per1=strfun.Split(dat1,"/")
-		list_date_per2=strfun.Split(dat1,"/")
-	
-	
-	
-		dat_mil_2=prsianDate.PersianToGregorian(list_date_per2.Get(0),list_date_per2.Get(1),list_date_per2.Get(2))
-		dat_mil_1=prsianDate.PersianToGregorian(list_date_per1.Get(0),list_date_per1.Get(1),list_date_per1.Get(2))
-	
-	
-		list_date_miladi1=strfun.Split(dat_mil_1,"/")
-		list_date_miladi2=strfun.Split(dat_mil_2,"/")
-	
-	
-		Dim date_end1 ,date_end2 As String
-		Dim time_end1 ,time_end2 As String
-	
-		date_end2=list_date_miladi2.Get(1)&"/"&list_date_miladi2.Get(2)&"/"&list_date_miladi2.Get(0)
-		date_end1=list_date_miladi1.Get(1)&"/"&list_date_miladi1.Get(2)&"/"&list_date_miladi1.Get(0)
-	
-		time_end2=tim2&":00"
-		time_end1=tim1&":00"
-	
-		Dim tim1_long As Long
-		Dim tim2_long As Long
-		tim1_long=DateTime.DateTimeParse(myFunc.fa2en(date_end1),myFunc.fa2en(time_end1))
-		tim2_long=DateTime.DateTimeParse(myFunc.fa2en(date_end2),myFunc.fa2en(time_end2))
-	
-	
-	
-		Dim period_between As Period
-		period_between=DateUtils.PeriodBetween(myFunc.fa2en(tim1_long),myFunc.fa2en(tim2_long))
-	
-	
-		Dim str_show As StringBuilder
-		str_show.Initialize
-	
-		If (period_between.Years<>0)Then
-			str_show.Append(period_between.Years&" سال ").Append(" و ")
-		End If
-		If (period_between.Months<>0)Then
-			str_show.Append(period_between.Months&" ماه ").Append(" و ")
-		End If
-		If (period_between.Days<>0)Then
-			str_show.Append(period_between.Days&" روز ").Append(" و ")
-		End If
-		
-		str_show.Append(period_between.Hours&" ساعت ").Append(" و ")
-		str_show.Append(period_between.Minutes&" دقیقه ")
-		
-		
-		'year_bt=period_between.Years
-		'moon_bt=period_between.Months
-		'day_bt=period_between.Days
-		
-		h_bt=period_between.Hours
-		m_bt=period_between.Minutes
-		
-		
-		
-		
-		
-	Catch
-		ToastMessageShow("خطا",False)
-	End Try
-	
+Private Sub pan_all_edit_Click
+	pan_all_edit.Visible=False
+End Sub
+
+Private Sub lbl_save_edit_Click
 	
 End Sub
 
+Private Sub lbl_delete_edit_Click
+	
+End Sub
+
+
+
+Private Sub lbl_vorod_time_edit_Click
+	
+	Dim tt() As String= Regex.Split(":",lbl_vorod_time_edit.Text)
+	Dim tt_h As Int=tt(0)
+	Dim tt_m As Int=tt(1)
+	
+	dialog_tim.SetTime(tt_h,tt_m,True)
+	
+	Dim j As Int= dialog_tim.Show("زمان ورود","انتخاب","باشه","","نه",Null)
+	If j=DialogResponse.POSITIVE Then
+		lbl_vorod_time_edit.Text=dialog_tim.Hour&":"&dialog_tim.Minute
+		
+		show_tim_lbl2
+	End If
+	
+End Sub
+
+Private Sub lbl_khoroj_time_edit_Click
+	
+	Dim tt() As String= Regex.Split(":",lbl_khoroj_time_edit.Text)
+	Dim tt_h As Int=tt(0)
+	Dim tt_m As Int=tt(1)
+	
+	dialog_tim.SetTime(tt_h,tt_m,True)
+	
+	Dim j As Int= dialog_tim.Show("زمان ورود","انتخاب","باشه","","نه",Null)
+	If j=DialogResponse.POSITIVE Then
+		lbl_khoroj_time_edit.Text=dialog_tim.Hour&":"&dialog_tim.Minute
+		
+		show_tim_lbl2
+	End If
+End Sub
+
+Private Sub lbl_vorod_time_Click
+	
+	
+	Dim tt() As String= Regex.Split(":",lbl_vorod_time.Text)
+	Dim tt_h As Int=tt(0)
+	Dim tt_m As Int=tt(1)
+	
+	dialog_tim.SetTime(tt_h,tt_m,True)
+	
+	Dim j As Int= dialog_tim.Show("زمان ورود","انتخاب","باشه","","نه",Null)
+	If j=DialogResponse.POSITIVE Then
+		lbl_vorod_time.Text=dialog_tim.Hour&":"&dialog_tim.Minute
+		
+		show_tim_lbl1
+	End If
+End Sub
+
+Private Sub lbl_khoroj_time_Click
+	
+	Dim tt() As String= Regex.Split(":",lbl_khoroj_time.Text)
+	Dim tt_h As Int=tt(0)
+	Dim tt_m As Int=tt(1)
+	
+	dialog_tim.SetTime(tt_h,tt_m,True)
+	
+	Dim j As Int= dialog_tim.Show("زمان خروج","انتخاب","باشه","","نه",Null)
+	If j=DialogResponse.POSITIVE Then
+		lbl_khoroj_time.Text=dialog_tim.Hour&":"&dialog_tim.Minute
+		
+		show_tim_lbl1
+	End If
+	
+	
+End Sub

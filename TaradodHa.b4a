@@ -11,12 +11,13 @@ FileGroup4=Default Group
 FileGroup5=Default Group
 Group=Default Group
 Library1=core
-Library2=manampersiandate
-Library3=sql
-Library4=stringfunctions
-Library5=xcustomlistview
-Library6=xui
-Library7=dateutils
+Library2=dateutils
+Library3=manampersiandate
+Library4=sql
+Library5=stringfunctions
+Library6=xcustomlistview
+Library7=xui
+Library8=dialogs
 ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="14" android:targetSdkVersion="30"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~CreateResourceFromFile(Macro, Themes.LightTheme)~\n~'End of default text.~\n~
 Module1=add_activity
 Module2=home_activity
@@ -24,7 +25,7 @@ Module3=list_activity
 Module4=myFunc
 Module5=Starter
 NumberOfFiles=5
-NumberOfLibraries=7
+NumberOfLibraries=8
 NumberOfModules=5
 Version=11.5
 @EndOfDesignText@
@@ -45,6 +46,9 @@ Version=11.5
 Sub Process_Globals
 	Dim sql As SQL
 	Dim res As ResultSet
+	
+	Dim prsianDate As ManamPersianDate
+	Dim strfun As StringFunctions
 	
 End Sub
 

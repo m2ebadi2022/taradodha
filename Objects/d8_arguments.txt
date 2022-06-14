@@ -5,12 +5,13 @@ E:\b4a\b4a new projects\TaradodHa\Objects
 D:\androidsdk\platforms\android-31\android.jar
 D:\androidsdk\tools\..\extras\b4a_local\unpacked-b4ashared-63783445550000\dex_v1\b4ashared.zip
 D:\androidsdk\tools\..\extras\b4a_local\unpacked-core-63783445550000\dex_v1\core.zip
+D:\androidsdk\tools\..\extras\b4a_local\unpacked-dateutils-63783445550000\dex_v1\dateutils.zip
 D:\androidsdk\tools\..\extras\b4a_local\unpacked-manampersiandate-63538368788692\dex_v1\manampersiandate.zip
 D:\androidsdk\tools\..\extras\b4a_local\unpacked-sql-63783445550000\dex_v1\sql.zip
 D:\androidsdk\tools\..\extras\b4a_local\unpacked-stringfunctions-63530416118000\dex_v1\stringfunctions.zip
 D:\androidsdk\tools\..\extras\b4a_local\unpacked-xcustomlistview-63783445550000\dex_v1\xcustomlistview.zip
 D:\androidsdk\tools\..\extras\b4a_local\unpacked-xui-63783445550000\dex_v1\xui.zip
-D:\androidsdk\tools\..\extras\b4a_local\unpacked-dateutils-63783445550000\dex_v1\dateutils.zip
+D:\androidsdk\tools\..\extras\b4a_local\unpacked-dialogs-63499011804000\dex_v1\dialogs.zip
 D:\androidsdk\tools\..\extras\b4a_local\unpacked-stringutils-63783445550000\dex_v1\stringutils.zip
 D:\androidsdk\tools\..\extras\b4a_local\unpacked-javaobject-63783445550000\dex_v1\javaobject.zip
 E:\b4a\b4a new projects\TaradodHa\Objects\dexed\ir\taravatgroup\taradodha\add_activity$1.dex

@@ -338,6 +338,8 @@ public class main extends Activity implements B4AActivity{
 public anywheresoftware.b4a.keywords.Common __c = null;
 public static anywheresoftware.b4a.sql.SQL _sql = null;
 public static anywheresoftware.b4a.sql.SQL.ResultSetWrapper _res = null;
+public static com.b4a.manamsoftware.PersianDate.ManamPersianDate _prsiandate = null;
+public static adr.stringfunctions.stringfunctions _strfun = null;
 public b4a.example.dateutils _dateutils = null;
 public ir.taravatgroup.taradodha.starter _starter = null;
 public ir.taravatgroup.taradodha.home_activity _home_activity = null;
@@ -353,29 +355,29 @@ vis = vis | (add_activity.mostCurrent != null);
 vis = vis | (list_activity.mostCurrent != null);
 return vis;}
 public static String  _activity_create(boolean _firsttime) throws Exception{
- //BA.debugLineNum = 26;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
- //BA.debugLineNum = 27;BA.debugLine="Activity.LoadLayout(\"main_layout\")";
+ //BA.debugLineNum = 29;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
+ //BA.debugLineNum = 30;BA.debugLine="Activity.LoadLayout(\"main_layout\")";
 mostCurrent._activity.LoadLayout("main_layout",mostCurrent.activityBA);
- //BA.debugLineNum = 30;BA.debugLine="StartActivity(home_activity)";
+ //BA.debugLineNum = 33;BA.debugLine="StartActivity(home_activity)";
 anywheresoftware.b4a.keywords.Common.StartActivity(processBA,(Object)(mostCurrent._home_activity.getObject()));
- //BA.debugLineNum = 31;BA.debugLine="Activity.Finish";
+ //BA.debugLineNum = 34;BA.debugLine="Activity.Finish";
 mostCurrent._activity.Finish();
- //BA.debugLineNum = 32;BA.debugLine="End Sub";
+ //BA.debugLineNum = 35;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_pause(boolean _userclosed) throws Exception{
- //BA.debugLineNum = 38;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
- //BA.debugLineNum = 40;BA.debugLine="End Sub";
+ //BA.debugLineNum = 41;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
+ //BA.debugLineNum = 43;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_resume() throws Exception{
- //BA.debugLineNum = 34;BA.debugLine="Sub Activity_Resume";
- //BA.debugLineNum = 36;BA.debugLine="End Sub";
+ //BA.debugLineNum = 37;BA.debugLine="Sub Activity_Resume";
+ //BA.debugLineNum = 39;BA.debugLine="End Sub";
 return "";
 }
 public static String  _globals() throws Exception{
- //BA.debugLineNum = 21;BA.debugLine="Sub Globals";
- //BA.debugLineNum = 24;BA.debugLine="End Sub";
+ //BA.debugLineNum = 24;BA.debugLine="Sub Globals";
+ //BA.debugLineNum = 27;BA.debugLine="End Sub";
 return "";
 }
 
@@ -402,7 +404,11 @@ myfunc._process_globals();
 _sql = new anywheresoftware.b4a.sql.SQL();
  //BA.debugLineNum = 17;BA.debugLine="Dim res As ResultSet";
 _res = new anywheresoftware.b4a.sql.SQL.ResultSetWrapper();
- //BA.debugLineNum = 19;BA.debugLine="End Sub";
+ //BA.debugLineNum = 19;BA.debugLine="Dim prsianDate As ManamPersianDate";
+_prsiandate = new com.b4a.manamsoftware.PersianDate.ManamPersianDate();
+ //BA.debugLineNum = 20;BA.debugLine="Dim strfun As StringFunctions";
+_strfun = new adr.stringfunctions.stringfunctions();
+ //BA.debugLineNum = 22;BA.debugLine="End Sub";
 return "";
 }
 }

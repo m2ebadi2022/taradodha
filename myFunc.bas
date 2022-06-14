@@ -22,6 +22,23 @@ Sub connection_sql
 	End If
 End Sub
 
+Sub get_by_id(id As Int) As List
+	
+	connection_sql
+	Main.res=Main.sql.ExecQuery("SELECT * FROM taradodha WHERE id="&id&" ;")
+	Main.res.Position=0
+	
+	Dim list_result As List
+	list_result.Initialize
+	
+	list_result.AddAll( Array As String(Main.res.GetInt("id"),Main.res.GetString("date"),Main.res.GetString("vorod"),Main.res.GetString("khoroj"),Main.res.GetInt("tim_h"),Main.res.GetInt("tim_m"),Main.res.GetString("tozih")))
+	
+	Main.sql.Close
+	Main.res.Close
+	
+	Return list_result
+	
+End Sub
 
 
 Sub get_data(sal As String, mah As String) As List
@@ -35,6 +52,9 @@ Sub get_data(sal As String, mah As String) As List
 		list_result.Add(Array As String(Main.res.GetInt("id"),Main.res.GetString("date"),Main.res.GetString("vorod"),Main.res.GetString("khoroj"),Main.res.GetInt("tim_h"),Main.res.GetInt("tim_m"),Main.res.GetString("tozih")))
 		
 	Loop
+	
+	Main.sql.Close
+	Main.res.Close
 	
 	Return list_result
 End Sub
@@ -54,3 +74,99 @@ Sub add_taradod(date As String,vorod As String,khoroj As String,h As Int,m As In
 	Main.sql.Close
 	Return True
 End Sub
+
+
+
+Sub time_show2 (dat1 As String, tim1 As String,tim2 As String) As List
+	
+	Try
+		Dim lis_result As List
+		lis_result.Initialize
+	
+	
+		Dim list_date_per1 , list_date_per2 As List
+		Dim list_date_miladi1 ,list_date_miladi2 As List
+		Dim dat_mil_2 As String
+		Dim dat_mil_1 As String
+	
+		list_date_per1.Initialize
+		list_date_per2.Initialize
+		list_date_miladi1.Initialize
+		list_date_miladi1.Initialize
+	
+		
+		
+		
+	
+		
+		list_date_per1=Main.strfun.Split(dat1,"/")
+		list_date_per2=Main.strfun.Split(dat1,"/")
+	
+	
+	
+		dat_mil_2=Main.prsianDate.PersianToGregorian(list_date_per2.Get(0),list_date_per2.Get(1),list_date_per2.Get(2))
+		dat_mil_1=Main.prsianDate.PersianToGregorian(list_date_per1.Get(0),list_date_per1.Get(1),list_date_per1.Get(2))
+	
+	
+		list_date_miladi1=Main.strfun.Split(dat_mil_1,"/")
+		list_date_miladi2=Main.strfun.Split(dat_mil_2,"/")
+	
+	
+		Dim date_end1 ,date_end2 As String
+		Dim time_end1 ,time_end2 As String
+	
+		date_end2=list_date_miladi2.Get(1)&"/"&list_date_miladi2.Get(2)&"/"&list_date_miladi2.Get(0)
+		date_end1=list_date_miladi1.Get(1)&"/"&list_date_miladi1.Get(2)&"/"&list_date_miladi1.Get(0)
+	
+		time_end2=tim2&":00"
+		time_end1=tim1&":00"
+	
+		Dim tim1_long As Long
+		Dim tim2_long As Long
+		tim1_long=DateTime.DateTimeParse(fa2en(date_end1),fa2en(time_end1))
+		tim2_long=DateTime.DateTimeParse(fa2en(date_end2),fa2en(time_end2))
+	
+	
+	
+		Dim period_between As Period
+		period_between=DateUtils.PeriodBetween(fa2en(tim1_long),fa2en(tim2_long))
+	
+	
+		Dim str_show As StringBuilder
+		str_show.Initialize
+	
+		If (period_between.Years<>0)Then
+			str_show.Append(period_between.Years&" سال ").Append(" و ")
+		End If
+		If (period_between.Months<>0)Then
+			str_show.Append(period_between.Months&" ماه ").Append(" و ")
+		End If
+		If (period_between.Days<>0)Then
+			str_show.Append(period_between.Days&" روز ").Append(" و ")
+		End If
+		
+		str_show.Append(period_between.Hours&" ساعت ").Append(" و ")
+		str_show.Append(period_between.Minutes&" دقیقه ")
+		
+		
+'		year_bt=period_between.Years
+'		moon_bt=period_between.Months
+'		day_bt=period_between.Days
+'		h_bt=period_between.Hours
+'		m_bt=period_between.Minutes
+
+		
+'		lbl_show_time.Text=""&h_bt&" و "&m_bt&"دقیقه "
+'		lbl_show_time_edit.Text=""&h_bt&" و "&m_bt&"دقیقه "
+
+		lis_result.Add(period_between.Hours)
+		lis_result.Add(period_between.Minutes)
+		
+	Catch
+		ToastMessageShow("خطا",False)
+	End Try
+	
+	Return lis_result
+End Sub
+
+
