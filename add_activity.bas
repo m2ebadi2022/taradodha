@@ -129,13 +129,13 @@ End Sub
 
 Sub show_tim_lbl1
 	Dim res_H_M As List =myFunc.time_show2(et_date.Text,lbl_vorod_time.Text,lbl_khoroj_time.Text)
-	lbl_show_time.Text=""&res_H_M.Get(0)&" و "&res_H_M.Get(1)&"دقیقه "
+	lbl_show_time.Text="ساعت "&res_H_M.Get(0)&" و "&res_H_M.Get(1)&"دقیقه "
 End Sub
 
 
 Sub show_tim_lbl2
 Dim res_H_M As List =myFunc.time_show2(et_date_edit.Text,lbl_vorod_time_edit.Text,lbl_khoroj_time_edit.Text)
-	lbl_show_time_edit.Text=""&res_H_M.Get(0)&" و "&res_H_M.Get(1)&"دقیقه "
+	lbl_show_time_edit.Text="ساعت "&res_H_M.Get(0)&" و "&res_H_M.Get(1)&"دقیقه "
 End Sub
 
 
@@ -198,10 +198,25 @@ Private Sub pan_all_edit_Click
 End Sub
 
 Private Sub lbl_save_edit_Click
+	Dim res_H_M As List =myFunc.time_show2(et_date_edit.Text,lbl_vorod_time_edit.Text,lbl_khoroj_time_edit.Text)
+	
+	
+	myFunc.edit_taradod(current_id,et_date_edit.Text,lbl_vorod_time_edit.Text,lbl_khoroj_time_edit.Text,res_H_M.Get(0),res_H_M.Get(1),et_tozih_edit.Text,1)
+	
+	pan_all_edit.Visible=False
+	fill_list("1401","03")
 	
 End Sub
 
 Private Sub lbl_delete_edit_Click
+	Dim result As Int
+	result = Msgbox2("آیا این مورد حذف شود؟", "حذف", "بله", "", "خیر", Null)
+	If result = DialogResponse.Positive Then 
+		myFunc.delete_taradod(current_id)
+		pan_all_edit.Visible=False
+		fill_list("1401","03")
+	End If
+	
 	
 End Sub
 
@@ -215,7 +230,7 @@ Private Sub lbl_vorod_time_edit_Click
 	
 	dialog_tim.SetTime(tt_h,tt_m,True)
 	
-	Dim j As Int= dialog_tim.Show("زمان ورود","انتخاب","باشه","","نه",Null)
+	Dim j As Int= dialog_tim.Show("","زمان ورود","باشه","","نه",Null)
 	If j=DialogResponse.POSITIVE Then
 		lbl_vorod_time_edit.Text=dialog_tim.Hour&":"&dialog_tim.Minute
 		
@@ -232,7 +247,7 @@ Private Sub lbl_khoroj_time_edit_Click
 	
 	dialog_tim.SetTime(tt_h,tt_m,True)
 	
-	Dim j As Int= dialog_tim.Show("زمان ورود","انتخاب","باشه","","نه",Null)
+	Dim j As Int= dialog_tim.Show("","زمان ورود","باشه","","نه",Null)
 	If j=DialogResponse.POSITIVE Then
 		lbl_khoroj_time_edit.Text=dialog_tim.Hour&":"&dialog_tim.Minute
 		
@@ -249,7 +264,7 @@ Private Sub lbl_vorod_time_Click
 	
 	dialog_tim.SetTime(tt_h,tt_m,True)
 	
-	Dim j As Int= dialog_tim.Show("زمان ورود","انتخاب","باشه","","نه",Null)
+	Dim j As Int= dialog_tim.Show("","زمان ورود","باشه","","نه",Null)
 	If j=DialogResponse.POSITIVE Then
 		lbl_vorod_time.Text=dialog_tim.Hour&":"&dialog_tim.Minute
 		
@@ -265,7 +280,7 @@ Private Sub lbl_khoroj_time_Click
 	
 	dialog_tim.SetTime(tt_h,tt_m,True)
 	
-	Dim j As Int= dialog_tim.Show("زمان خروج","انتخاب","باشه","","نه",Null)
+	Dim j As Int= dialog_tim.Show("","زمان خروج","باشه","","نه",Null)
 	If j=DialogResponse.POSITIVE Then
 		lbl_khoroj_time.Text=dialog_tim.Hour&":"&dialog_tim.Minute
 		

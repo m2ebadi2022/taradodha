@@ -517,8 +517,22 @@ mostCurrent._activity.Finish();
 return "";
 }
 public static String  _lbl_delete_edit_click() throws Exception{
- //BA.debugLineNum = 198;BA.debugLine="Private Sub lbl_delete_edit_Click";
- //BA.debugLineNum = 200;BA.debugLine="End Sub";
+int _result = 0;
+ //BA.debugLineNum = 205;BA.debugLine="Private Sub lbl_delete_edit_Click";
+ //BA.debugLineNum = 206;BA.debugLine="Dim result As Int";
+_result = 0;
+ //BA.debugLineNum = 207;BA.debugLine="result = Msgbox2(\"آیا این مورد حذف شود؟\", \"حذف\",";
+_result = anywheresoftware.b4a.keywords.Common.Msgbox2(BA.ObjectToCharSequence("آیا این مورد حذف شود؟"),BA.ObjectToCharSequence("حذف"),"بله","","خیر",(android.graphics.Bitmap)(anywheresoftware.b4a.keywords.Common.Null),mostCurrent.activityBA);
+ //BA.debugLineNum = 208;BA.debugLine="If result = DialogResponse.Positive Then";
+if (_result==anywheresoftware.b4a.keywords.Common.DialogResponse.POSITIVE) { 
+ //BA.debugLineNum = 209;BA.debugLine="myFunc.delete_taradod(current_id)";
+mostCurrent._myfunc._delete_taradod /*boolean*/ (mostCurrent.activityBA,_current_id);
+ //BA.debugLineNum = 210;BA.debugLine="pan_all_edit.Visible=False";
+mostCurrent._pan_all_edit.setVisible(anywheresoftware.b4a.keywords.Common.False);
+ //BA.debugLineNum = 211;BA.debugLine="fill_list(\"1401\",\"03\")";
+_fill_list("1401","03");
+ };
+ //BA.debugLineNum = 215;BA.debugLine="End Sub";
 return "";
 }
 public static String  _lbl_edit_item_click() throws Exception{
@@ -567,25 +581,25 @@ String[] _tt = null;
 int _tt_h = 0;
 int _tt_m = 0;
 int _j = 0;
- //BA.debugLineNum = 254;BA.debugLine="Private Sub lbl_khoroj_time_Click";
- //BA.debugLineNum = 256;BA.debugLine="Dim tt() As String= Regex.Split(\":\",lbl_khoroj_ti";
+ //BA.debugLineNum = 269;BA.debugLine="Private Sub lbl_khoroj_time_Click";
+ //BA.debugLineNum = 271;BA.debugLine="Dim tt() As String= Regex.Split(\":\",lbl_khoroj_ti";
 _tt = anywheresoftware.b4a.keywords.Common.Regex.Split(":",mostCurrent._lbl_khoroj_time.getText());
- //BA.debugLineNum = 257;BA.debugLine="Dim tt_h As Int=tt(0)";
+ //BA.debugLineNum = 272;BA.debugLine="Dim tt_h As Int=tt(0)";
 _tt_h = (int)(Double.parseDouble(_tt[(int) (0)]));
- //BA.debugLineNum = 258;BA.debugLine="Dim tt_m As Int=tt(1)";
+ //BA.debugLineNum = 273;BA.debugLine="Dim tt_m As Int=tt(1)";
 _tt_m = (int)(Double.parseDouble(_tt[(int) (1)]));
- //BA.debugLineNum = 260;BA.debugLine="dialog_tim.SetTime(tt_h,tt_m,True)";
+ //BA.debugLineNum = 275;BA.debugLine="dialog_tim.SetTime(tt_h,tt_m,True)";
 mostCurrent._dialog_tim.SetTime(_tt_h,_tt_m,anywheresoftware.b4a.keywords.Common.True);
- //BA.debugLineNum = 262;BA.debugLine="Dim j As Int= dialog_tim.Show(\"زمان خروج\",\"انتخاب";
-_j = mostCurrent._dialog_tim.Show("زمان خروج","انتخاب","باشه","","نه",mostCurrent.activityBA,(android.graphics.Bitmap)(anywheresoftware.b4a.keywords.Common.Null));
- //BA.debugLineNum = 263;BA.debugLine="If j=DialogResponse.POSITIVE Then";
+ //BA.debugLineNum = 277;BA.debugLine="Dim j As Int= dialog_tim.Show(\"\",\"زمان خروج\",\"باش";
+_j = mostCurrent._dialog_tim.Show("","زمان خروج","باشه","","نه",mostCurrent.activityBA,(android.graphics.Bitmap)(anywheresoftware.b4a.keywords.Common.Null));
+ //BA.debugLineNum = 278;BA.debugLine="If j=DialogResponse.POSITIVE Then";
 if (_j==anywheresoftware.b4a.keywords.Common.DialogResponse.POSITIVE) { 
- //BA.debugLineNum = 264;BA.debugLine="lbl_khoroj_time.Text=dialog_tim.Hour&\":\"&dialog_";
+ //BA.debugLineNum = 279;BA.debugLine="lbl_khoroj_time.Text=dialog_tim.Hour&\":\"&dialog_";
 mostCurrent._lbl_khoroj_time.setText(BA.ObjectToCharSequence(BA.NumberToString(mostCurrent._dialog_tim.getHour())+":"+BA.NumberToString(mostCurrent._dialog_tim.getMinute())));
- //BA.debugLineNum = 266;BA.debugLine="show_tim_lbl1";
+ //BA.debugLineNum = 281;BA.debugLine="show_tim_lbl1";
 _show_tim_lbl1();
  };
- //BA.debugLineNum = 270;BA.debugLine="End Sub";
+ //BA.debugLineNum = 285;BA.debugLine="End Sub";
 return "";
 }
 public static String  _lbl_khoroj_time_edit_click() throws Exception{
@@ -593,25 +607,25 @@ String[] _tt = null;
 int _tt_h = 0;
 int _tt_m = 0;
 int _j = 0;
- //BA.debugLineNum = 221;BA.debugLine="Private Sub lbl_khoroj_time_edit_Click";
- //BA.debugLineNum = 223;BA.debugLine="Dim tt() As String= Regex.Split(\":\",lbl_khoroj_ti";
+ //BA.debugLineNum = 236;BA.debugLine="Private Sub lbl_khoroj_time_edit_Click";
+ //BA.debugLineNum = 238;BA.debugLine="Dim tt() As String= Regex.Split(\":\",lbl_khoroj_ti";
 _tt = anywheresoftware.b4a.keywords.Common.Regex.Split(":",mostCurrent._lbl_khoroj_time_edit.getText());
- //BA.debugLineNum = 224;BA.debugLine="Dim tt_h As Int=tt(0)";
+ //BA.debugLineNum = 239;BA.debugLine="Dim tt_h As Int=tt(0)";
 _tt_h = (int)(Double.parseDouble(_tt[(int) (0)]));
- //BA.debugLineNum = 225;BA.debugLine="Dim tt_m As Int=tt(1)";
+ //BA.debugLineNum = 240;BA.debugLine="Dim tt_m As Int=tt(1)";
 _tt_m = (int)(Double.parseDouble(_tt[(int) (1)]));
- //BA.debugLineNum = 227;BA.debugLine="dialog_tim.SetTime(tt_h,tt_m,True)";
+ //BA.debugLineNum = 242;BA.debugLine="dialog_tim.SetTime(tt_h,tt_m,True)";
 mostCurrent._dialog_tim.SetTime(_tt_h,_tt_m,anywheresoftware.b4a.keywords.Common.True);
- //BA.debugLineNum = 229;BA.debugLine="Dim j As Int= dialog_tim.Show(\"زمان ورود\",\"انتخاب";
-_j = mostCurrent._dialog_tim.Show("زمان ورود","انتخاب","باشه","","نه",mostCurrent.activityBA,(android.graphics.Bitmap)(anywheresoftware.b4a.keywords.Common.Null));
- //BA.debugLineNum = 230;BA.debugLine="If j=DialogResponse.POSITIVE Then";
+ //BA.debugLineNum = 244;BA.debugLine="Dim j As Int= dialog_tim.Show(\"\",\"زمان ورود\",\"باش";
+_j = mostCurrent._dialog_tim.Show("","زمان ورود","باشه","","نه",mostCurrent.activityBA,(android.graphics.Bitmap)(anywheresoftware.b4a.keywords.Common.Null));
+ //BA.debugLineNum = 245;BA.debugLine="If j=DialogResponse.POSITIVE Then";
 if (_j==anywheresoftware.b4a.keywords.Common.DialogResponse.POSITIVE) { 
- //BA.debugLineNum = 231;BA.debugLine="lbl_khoroj_time_edit.Text=dialog_tim.Hour&\":\"&di";
+ //BA.debugLineNum = 246;BA.debugLine="lbl_khoroj_time_edit.Text=dialog_tim.Hour&\":\"&di";
 mostCurrent._lbl_khoroj_time_edit.setText(BA.ObjectToCharSequence(BA.NumberToString(mostCurrent._dialog_tim.getHour())+":"+BA.NumberToString(mostCurrent._dialog_tim.getMinute())));
- //BA.debugLineNum = 233;BA.debugLine="show_tim_lbl2";
+ //BA.debugLineNum = 248;BA.debugLine="show_tim_lbl2";
 _show_tim_lbl2();
  };
- //BA.debugLineNum = 235;BA.debugLine="End Sub";
+ //BA.debugLineNum = 250;BA.debugLine="End Sub";
 return "";
 }
 public static String  _lbl_save_click() throws Exception{
@@ -630,8 +644,18 @@ mostCurrent._et_tozih.setText(BA.ObjectToCharSequence(""));
 return "";
 }
 public static String  _lbl_save_edit_click() throws Exception{
+anywheresoftware.b4a.objects.collections.List _res_h_m = null;
  //BA.debugLineNum = 194;BA.debugLine="Private Sub lbl_save_edit_Click";
- //BA.debugLineNum = 196;BA.debugLine="End Sub";
+ //BA.debugLineNum = 195;BA.debugLine="Dim res_H_M As List =myFunc.time_show2(et_date_ed";
+_res_h_m = new anywheresoftware.b4a.objects.collections.List();
+_res_h_m = mostCurrent._myfunc._time_show2 /*anywheresoftware.b4a.objects.collections.List*/ (mostCurrent.activityBA,mostCurrent._et_date_edit.getText(),mostCurrent._lbl_vorod_time_edit.getText(),mostCurrent._lbl_khoroj_time_edit.getText());
+ //BA.debugLineNum = 198;BA.debugLine="myFunc.edit_taradod(current_id,et_date_edit.Text,";
+mostCurrent._myfunc._edit_taradod /*boolean*/ (mostCurrent.activityBA,_current_id,mostCurrent._et_date_edit.getText(),mostCurrent._lbl_vorod_time_edit.getText(),mostCurrent._lbl_khoroj_time_edit.getText(),(int)(BA.ObjectToNumber(_res_h_m.Get((int) (0)))),(int)(BA.ObjectToNumber(_res_h_m.Get((int) (1)))),mostCurrent._et_tozih_edit.getText(),(int) (1));
+ //BA.debugLineNum = 200;BA.debugLine="pan_all_edit.Visible=False";
+mostCurrent._pan_all_edit.setVisible(anywheresoftware.b4a.keywords.Common.False);
+ //BA.debugLineNum = 201;BA.debugLine="fill_list(\"1401\",\"03\")";
+_fill_list("1401","03");
+ //BA.debugLineNum = 203;BA.debugLine="End Sub";
 return "";
 }
 public static String  _lbl_vorod_tap_click() throws Exception{
@@ -653,25 +677,25 @@ String[] _tt = null;
 int _tt_h = 0;
 int _tt_m = 0;
 int _j = 0;
- //BA.debugLineNum = 237;BA.debugLine="Private Sub lbl_vorod_time_Click";
- //BA.debugLineNum = 240;BA.debugLine="Dim tt() As String= Regex.Split(\":\",lbl_vorod_tim";
+ //BA.debugLineNum = 252;BA.debugLine="Private Sub lbl_vorod_time_Click";
+ //BA.debugLineNum = 255;BA.debugLine="Dim tt() As String= Regex.Split(\":\",lbl_vorod_tim";
 _tt = anywheresoftware.b4a.keywords.Common.Regex.Split(":",mostCurrent._lbl_vorod_time.getText());
- //BA.debugLineNum = 241;BA.debugLine="Dim tt_h As Int=tt(0)";
+ //BA.debugLineNum = 256;BA.debugLine="Dim tt_h As Int=tt(0)";
 _tt_h = (int)(Double.parseDouble(_tt[(int) (0)]));
- //BA.debugLineNum = 242;BA.debugLine="Dim tt_m As Int=tt(1)";
+ //BA.debugLineNum = 257;BA.debugLine="Dim tt_m As Int=tt(1)";
 _tt_m = (int)(Double.parseDouble(_tt[(int) (1)]));
- //BA.debugLineNum = 244;BA.debugLine="dialog_tim.SetTime(tt_h,tt_m,True)";
+ //BA.debugLineNum = 259;BA.debugLine="dialog_tim.SetTime(tt_h,tt_m,True)";
 mostCurrent._dialog_tim.SetTime(_tt_h,_tt_m,anywheresoftware.b4a.keywords.Common.True);
- //BA.debugLineNum = 246;BA.debugLine="Dim j As Int= dialog_tim.Show(\"زمان ورود\",\"انتخاب";
-_j = mostCurrent._dialog_tim.Show("زمان ورود","انتخاب","باشه","","نه",mostCurrent.activityBA,(android.graphics.Bitmap)(anywheresoftware.b4a.keywords.Common.Null));
- //BA.debugLineNum = 247;BA.debugLine="If j=DialogResponse.POSITIVE Then";
+ //BA.debugLineNum = 261;BA.debugLine="Dim j As Int= dialog_tim.Show(\"\",\"زمان ورود\",\"باش";
+_j = mostCurrent._dialog_tim.Show("","زمان ورود","باشه","","نه",mostCurrent.activityBA,(android.graphics.Bitmap)(anywheresoftware.b4a.keywords.Common.Null));
+ //BA.debugLineNum = 262;BA.debugLine="If j=DialogResponse.POSITIVE Then";
 if (_j==anywheresoftware.b4a.keywords.Common.DialogResponse.POSITIVE) { 
- //BA.debugLineNum = 248;BA.debugLine="lbl_vorod_time.Text=dialog_tim.Hour&\":\"&dialog_t";
+ //BA.debugLineNum = 263;BA.debugLine="lbl_vorod_time.Text=dialog_tim.Hour&\":\"&dialog_t";
 mostCurrent._lbl_vorod_time.setText(BA.ObjectToCharSequence(BA.NumberToString(mostCurrent._dialog_tim.getHour())+":"+BA.NumberToString(mostCurrent._dialog_tim.getMinute())));
- //BA.debugLineNum = 250;BA.debugLine="show_tim_lbl1";
+ //BA.debugLineNum = 265;BA.debugLine="show_tim_lbl1";
 _show_tim_lbl1();
  };
- //BA.debugLineNum = 252;BA.debugLine="End Sub";
+ //BA.debugLineNum = 267;BA.debugLine="End Sub";
 return "";
 }
 public static String  _lbl_vorod_time_edit_click() throws Exception{
@@ -679,25 +703,25 @@ String[] _tt = null;
 int _tt_h = 0;
 int _tt_m = 0;
 int _j = 0;
- //BA.debugLineNum = 204;BA.debugLine="Private Sub lbl_vorod_time_edit_Click";
- //BA.debugLineNum = 206;BA.debugLine="Dim tt() As String= Regex.Split(\":\",lbl_vorod_tim";
+ //BA.debugLineNum = 219;BA.debugLine="Private Sub lbl_vorod_time_edit_Click";
+ //BA.debugLineNum = 221;BA.debugLine="Dim tt() As String= Regex.Split(\":\",lbl_vorod_tim";
 _tt = anywheresoftware.b4a.keywords.Common.Regex.Split(":",mostCurrent._lbl_vorod_time_edit.getText());
- //BA.debugLineNum = 207;BA.debugLine="Dim tt_h As Int=tt(0)";
+ //BA.debugLineNum = 222;BA.debugLine="Dim tt_h As Int=tt(0)";
 _tt_h = (int)(Double.parseDouble(_tt[(int) (0)]));
- //BA.debugLineNum = 208;BA.debugLine="Dim tt_m As Int=tt(1)";
+ //BA.debugLineNum = 223;BA.debugLine="Dim tt_m As Int=tt(1)";
 _tt_m = (int)(Double.parseDouble(_tt[(int) (1)]));
- //BA.debugLineNum = 210;BA.debugLine="dialog_tim.SetTime(tt_h,tt_m,True)";
+ //BA.debugLineNum = 225;BA.debugLine="dialog_tim.SetTime(tt_h,tt_m,True)";
 mostCurrent._dialog_tim.SetTime(_tt_h,_tt_m,anywheresoftware.b4a.keywords.Common.True);
- //BA.debugLineNum = 212;BA.debugLine="Dim j As Int= dialog_tim.Show(\"زمان ورود\",\"انتخاب";
-_j = mostCurrent._dialog_tim.Show("زمان ورود","انتخاب","باشه","","نه",mostCurrent.activityBA,(android.graphics.Bitmap)(anywheresoftware.b4a.keywords.Common.Null));
- //BA.debugLineNum = 213;BA.debugLine="If j=DialogResponse.POSITIVE Then";
+ //BA.debugLineNum = 227;BA.debugLine="Dim j As Int= dialog_tim.Show(\"\",\"زمان ورود\",\"باش";
+_j = mostCurrent._dialog_tim.Show("","زمان ورود","باشه","","نه",mostCurrent.activityBA,(android.graphics.Bitmap)(anywheresoftware.b4a.keywords.Common.Null));
+ //BA.debugLineNum = 228;BA.debugLine="If j=DialogResponse.POSITIVE Then";
 if (_j==anywheresoftware.b4a.keywords.Common.DialogResponse.POSITIVE) { 
- //BA.debugLineNum = 214;BA.debugLine="lbl_vorod_time_edit.Text=dialog_tim.Hour&\":\"&dia";
+ //BA.debugLineNum = 229;BA.debugLine="lbl_vorod_time_edit.Text=dialog_tim.Hour&\":\"&dia";
 mostCurrent._lbl_vorod_time_edit.setText(BA.ObjectToCharSequence(BA.NumberToString(mostCurrent._dialog_tim.getHour())+":"+BA.NumberToString(mostCurrent._dialog_tim.getMinute())));
- //BA.debugLineNum = 216;BA.debugLine="show_tim_lbl2";
+ //BA.debugLineNum = 231;BA.debugLine="show_tim_lbl2";
 _show_tim_lbl2();
  };
- //BA.debugLineNum = 219;BA.debugLine="End Sub";
+ //BA.debugLineNum = 234;BA.debugLine="End Sub";
 return "";
 }
 public static String  _pan_all_edit_click() throws Exception{
@@ -718,8 +742,8 @@ anywheresoftware.b4a.objects.collections.List _res_h_m = null;
  //BA.debugLineNum = 125;BA.debugLine="Dim res_H_M As List =myFunc.time_show2(et_date.Te";
 _res_h_m = new anywheresoftware.b4a.objects.collections.List();
 _res_h_m = mostCurrent._myfunc._time_show2 /*anywheresoftware.b4a.objects.collections.List*/ (mostCurrent.activityBA,mostCurrent._et_date.getText(),mostCurrent._lbl_vorod_time.getText(),mostCurrent._lbl_khoroj_time.getText());
- //BA.debugLineNum = 126;BA.debugLine="lbl_show_time.Text=\"\"&res_H_M.Get(0)&\" و \"&res_H_";
-mostCurrent._lbl_show_time.setText(BA.ObjectToCharSequence(""+BA.ObjectToString(_res_h_m.Get((int) (0)))+" و "+BA.ObjectToString(_res_h_m.Get((int) (1)))+"دقیقه "));
+ //BA.debugLineNum = 126;BA.debugLine="lbl_show_time.Text=\"ساعت \"&res_H_M.Get(0)&\" و \"&r";
+mostCurrent._lbl_show_time.setText(BA.ObjectToCharSequence("ساعت "+BA.ObjectToString(_res_h_m.Get((int) (0)))+" و "+BA.ObjectToString(_res_h_m.Get((int) (1)))+"دقیقه "));
  //BA.debugLineNum = 127;BA.debugLine="End Sub";
 return "";
 }
@@ -729,8 +753,8 @@ anywheresoftware.b4a.objects.collections.List _res_h_m = null;
  //BA.debugLineNum = 131;BA.debugLine="Dim res_H_M As List =myFunc.time_show2(et_date_edi";
 _res_h_m = new anywheresoftware.b4a.objects.collections.List();
 _res_h_m = mostCurrent._myfunc._time_show2 /*anywheresoftware.b4a.objects.collections.List*/ (mostCurrent.activityBA,mostCurrent._et_date_edit.getText(),mostCurrent._lbl_vorod_time_edit.getText(),mostCurrent._lbl_khoroj_time_edit.getText());
- //BA.debugLineNum = 132;BA.debugLine="lbl_show_time_edit.Text=\"\"&res_H_M.Get(0)&\" و \"&r";
-mostCurrent._lbl_show_time_edit.setText(BA.ObjectToCharSequence(""+BA.ObjectToString(_res_h_m.Get((int) (0)))+" و "+BA.ObjectToString(_res_h_m.Get((int) (1)))+"دقیقه "));
+ //BA.debugLineNum = 132;BA.debugLine="lbl_show_time_edit.Text=\"ساعت \"&res_H_M.Get(0)&\"";
+mostCurrent._lbl_show_time_edit.setText(BA.ObjectToCharSequence("ساعت "+BA.ObjectToString(_res_h_m.Get((int) (0)))+" و "+BA.ObjectToString(_res_h_m.Get((int) (1)))+"دقیقه "));
  //BA.debugLineNum = 133;BA.debugLine="End Sub";
 return "";
 }

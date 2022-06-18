@@ -336,6 +336,19 @@ public class list_activity extends Activity implements B4AActivity{
     }
 
 public anywheresoftware.b4a.keywords.Common __c = null;
+public static int _current_id = 0;
+public anywheresoftware.b4a.agraham.dialogs.InputDialog.TimeDialog _dialog_tim = null;
+public anywheresoftware.b4a.objects.LabelWrapper _lbl_show_alltime = null;
+public b4a.example3.customlistview _cuslistv_data = null;
+public anywheresoftware.b4a.objects.EditTextWrapper _et_mah = null;
+public anywheresoftware.b4a.objects.EditTextWrapper _et_sall = null;
+public anywheresoftware.b4a.objects.B4XViewWrapper.XUI _xui = null;
+public anywheresoftware.b4a.objects.B4XViewWrapper _p = null;
+public anywheresoftware.b4a.objects.LabelWrapper _lbl_date_item = null;
+public anywheresoftware.b4a.objects.LabelWrapper _lbl_vorod_item = null;
+public anywheresoftware.b4a.objects.LabelWrapper _lbl_khoroj_item = null;
+public anywheresoftware.b4a.objects.LabelWrapper _lbl_tozih_item = null;
+public anywheresoftware.b4a.objects.LabelWrapper _lbl_edit_item = null;
 public b4a.example.dateutils _dateutils = null;
 public ir.taravatgroup.taradodha.main _main = null;
 public ir.taravatgroup.taradodha.starter _starter = null;
@@ -351,34 +364,134 @@ public static void initializeProcessGlobals() {
             }
 }
 public static String  _activity_create(boolean _firsttime) throws Exception{
- //BA.debugLineNum = 18;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
- //BA.debugLineNum = 20;BA.debugLine="Activity.LoadLayout(\"list_layout\")";
+ //BA.debugLineNum = 35;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
+ //BA.debugLineNum = 37;BA.debugLine="Activity.LoadLayout(\"list_layout\")";
 mostCurrent._activity.LoadLayout("list_layout",mostCurrent.activityBA);
- //BA.debugLineNum = 22;BA.debugLine="End Sub";
+ //BA.debugLineNum = 39;BA.debugLine="fill_list(\"1401\",\"03\")";
+_fill_list("1401","03");
+ //BA.debugLineNum = 40;BA.debugLine="dialog_tim.Is24Hours=True";
+mostCurrent._dialog_tim.setIs24Hours(anywheresoftware.b4a.keywords.Common.True);
+ //BA.debugLineNum = 41;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_pause(boolean _userclosed) throws Exception{
- //BA.debugLineNum = 28;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
- //BA.debugLineNum = 30;BA.debugLine="End Sub";
+ //BA.debugLineNum = 91;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
+ //BA.debugLineNum = 93;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_resume() throws Exception{
- //BA.debugLineNum = 24;BA.debugLine="Sub Activity_Resume";
- //BA.debugLineNum = 26;BA.debugLine="End Sub";
+ //BA.debugLineNum = 87;BA.debugLine="Sub Activity_Resume";
+ //BA.debugLineNum = 89;BA.debugLine="End Sub";
+return "";
+}
+public static String  _fill_list(String _sal,String _mah) throws Exception{
+anywheresoftware.b4a.objects.collections.List _list1 = null;
+int _all_tim_h = 0;
+int _all_tim_m = 0;
+int _i = 0;
+String[] _list2 = null;
+ //BA.debugLineNum = 43;BA.debugLine="Sub fill_list(sal As String , mah As String)";
+ //BA.debugLineNum = 44;BA.debugLine="Dim list1 As List";
+_list1 = new anywheresoftware.b4a.objects.collections.List();
+ //BA.debugLineNum = 45;BA.debugLine="list1.Initialize";
+_list1.Initialize();
+ //BA.debugLineNum = 46;BA.debugLine="list1=myFunc.get_data(sal,mah)";
+_list1 = mostCurrent._myfunc._get_data /*anywheresoftware.b4a.objects.collections.List*/ (mostCurrent.activityBA,_sal,_mah);
+ //BA.debugLineNum = 53;BA.debugLine="cusListV_data.Clear";
+mostCurrent._cuslistv_data._clear();
+ //BA.debugLineNum = 55;BA.debugLine="Dim all_tim_h As Int=0";
+_all_tim_h = (int) (0);
+ //BA.debugLineNum = 56;BA.debugLine="Dim all_tim_m As Int=0";
+_all_tim_m = (int) (0);
+ //BA.debugLineNum = 60;BA.debugLine="For i=0 To list1.Size-1";
+{
+final int step7 = 1;
+final int limit7 = (int) (_list1.getSize()-1);
+_i = (int) (0) ;
+for (;_i <= limit7 ;_i = _i + step7 ) {
+ //BA.debugLineNum = 61;BA.debugLine="p = xui.CreatePanel(\"p\")";
+mostCurrent._p = mostCurrent._xui.CreatePanel(processBA,"p");
+ //BA.debugLineNum = 62;BA.debugLine="p.SetLayoutAnimated(0, 0, 0, 95%x, 120dip)";
+mostCurrent._p.SetLayoutAnimated((int) (0),(int) (0),(int) (0),anywheresoftware.b4a.keywords.Common.PerXToCurrent((float) (95),mostCurrent.activityBA),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (120)));
+ //BA.debugLineNum = 63;BA.debugLine="p.LoadLayout(\"irem_data\")";
+mostCurrent._p.LoadLayout("irem_data",mostCurrent.activityBA);
+ //BA.debugLineNum = 64;BA.debugLine="Dim list2() As String=list1.Get(i)";
+_list2 = (String[])(_list1.Get(_i));
+ //BA.debugLineNum = 66;BA.debugLine="cusListV_data.Add(p,list2(0))";
+mostCurrent._cuslistv_data._add(mostCurrent._p,(Object)(_list2[(int) (0)]));
+ //BA.debugLineNum = 67;BA.debugLine="lbl_edit_item.Tag=list2(0)";
+mostCurrent._lbl_edit_item.setTag((Object)(_list2[(int) (0)]));
+ //BA.debugLineNum = 69;BA.debugLine="lbl_date_item.Text=list2(1)";
+mostCurrent._lbl_date_item.setText(BA.ObjectToCharSequence(_list2[(int) (1)]));
+ //BA.debugLineNum = 70;BA.debugLine="lbl_vorod_item.Text=list2(2)";
+mostCurrent._lbl_vorod_item.setText(BA.ObjectToCharSequence(_list2[(int) (2)]));
+ //BA.debugLineNum = 71;BA.debugLine="lbl_khoroj_item.Text=list2(3)";
+mostCurrent._lbl_khoroj_item.setText(BA.ObjectToCharSequence(_list2[(int) (3)]));
+ //BA.debugLineNum = 72;BA.debugLine="lbl_tozih_item.Text=list2(6)";
+mostCurrent._lbl_tozih_item.setText(BA.ObjectToCharSequence(_list2[(int) (6)]));
+ //BA.debugLineNum = 74;BA.debugLine="all_tim_h=all_tim_h+list2(4)";
+_all_tim_h = (int) (_all_tim_h+(double)(Double.parseDouble(_list2[(int) (4)])));
+ //BA.debugLineNum = 75;BA.debugLine="all_tim_m=all_tim_m+list2(5)";
+_all_tim_m = (int) (_all_tim_m+(double)(Double.parseDouble(_list2[(int) (5)])));
+ }
+};
+ //BA.debugLineNum = 79;BA.debugLine="If(all_tim_m>59)Then";
+if ((_all_tim_m>59)) { 
+ //BA.debugLineNum = 80;BA.debugLine="all_tim_h=all_tim_h+(all_tim_m / 60)";
+_all_tim_h = (int) (_all_tim_h+(_all_tim_m/(double)60));
+ //BA.debugLineNum = 81;BA.debugLine="all_tim_m=all_tim_m Mod 60";
+_all_tim_m = (int) (_all_tim_m%60);
+ };
+ //BA.debugLineNum = 84;BA.debugLine="lbl_show_allTime.Text=all_tim_h &\"ساعت و \"&all_ti";
+mostCurrent._lbl_show_alltime.setText(BA.ObjectToCharSequence(BA.NumberToString(_all_tim_h)+"ساعت و "+BA.NumberToString(_all_tim_m)+"دقیقه "));
+ //BA.debugLineNum = 85;BA.debugLine="End Sub";
 return "";
 }
 public static String  _globals() throws Exception{
  //BA.debugLineNum = 12;BA.debugLine="Sub Globals";
- //BA.debugLineNum = 16;BA.debugLine="End Sub";
+ //BA.debugLineNum = 17;BA.debugLine="Dim current_id As Int=0";
+_current_id = (int) (0);
+ //BA.debugLineNum = 19;BA.debugLine="Dim dialog_tim As TimeDialog";
+mostCurrent._dialog_tim = new anywheresoftware.b4a.agraham.dialogs.InputDialog.TimeDialog();
+ //BA.debugLineNum = 20;BA.debugLine="Private lbl_show_allTime As Label";
+mostCurrent._lbl_show_alltime = new anywheresoftware.b4a.objects.LabelWrapper();
+ //BA.debugLineNum = 21;BA.debugLine="Private cusListV_data As CustomListView";
+mostCurrent._cuslistv_data = new b4a.example3.customlistview();
+ //BA.debugLineNum = 22;BA.debugLine="Private et_mah As EditText";
+mostCurrent._et_mah = new anywheresoftware.b4a.objects.EditTextWrapper();
+ //BA.debugLineNum = 23;BA.debugLine="Private et_sall As EditText";
+mostCurrent._et_sall = new anywheresoftware.b4a.objects.EditTextWrapper();
+ //BA.debugLineNum = 24;BA.debugLine="Private xui As XUI";
+mostCurrent._xui = new anywheresoftware.b4a.objects.B4XViewWrapper.XUI();
+ //BA.debugLineNum = 25;BA.debugLine="Dim p As B4XView";
+mostCurrent._p = new anywheresoftware.b4a.objects.B4XViewWrapper();
+ //BA.debugLineNum = 27;BA.debugLine="Private lbl_date_item As Label";
+mostCurrent._lbl_date_item = new anywheresoftware.b4a.objects.LabelWrapper();
+ //BA.debugLineNum = 28;BA.debugLine="Private lbl_vorod_item As Label";
+mostCurrent._lbl_vorod_item = new anywheresoftware.b4a.objects.LabelWrapper();
+ //BA.debugLineNum = 29;BA.debugLine="Private lbl_khoroj_item As Label";
+mostCurrent._lbl_khoroj_item = new anywheresoftware.b4a.objects.LabelWrapper();
+ //BA.debugLineNum = 30;BA.debugLine="Private lbl_tozih_item As Label";
+mostCurrent._lbl_tozih_item = new anywheresoftware.b4a.objects.LabelWrapper();
+ //BA.debugLineNum = 31;BA.debugLine="Private lbl_edit_item As Label";
+mostCurrent._lbl_edit_item = new anywheresoftware.b4a.objects.LabelWrapper();
+ //BA.debugLineNum = 33;BA.debugLine="End Sub";
 return "";
 }
 public static String  _lbl_back_click() throws Exception{
- //BA.debugLineNum = 33;BA.debugLine="Private Sub lbl_back_Click";
- //BA.debugLineNum = 34;BA.debugLine="StartActivity(home_activity)";
+ //BA.debugLineNum = 96;BA.debugLine="Private Sub lbl_back_Click";
+ //BA.debugLineNum = 97;BA.debugLine="StartActivity(home_activity)";
 anywheresoftware.b4a.keywords.Common.StartActivity(processBA,(Object)(mostCurrent._home_activity.getObject()));
- //BA.debugLineNum = 35;BA.debugLine="Activity.Finish";
+ //BA.debugLineNum = 98;BA.debugLine="Activity.Finish";
 mostCurrent._activity.Finish();
- //BA.debugLineNum = 36;BA.debugLine="End Sub";
+ //BA.debugLineNum = 99;BA.debugLine="End Sub";
+return "";
+}
+public static String  _lbl_show_list_click() throws Exception{
+ //BA.debugLineNum = 101;BA.debugLine="Private Sub lbl_show_list_Click";
+ //BA.debugLineNum = 102;BA.debugLine="fill_list(et_sall.Text,et_mah.Text)";
+_fill_list(mostCurrent._et_sall.getText(),mostCurrent._et_mah.getText());
+ //BA.debugLineNum = 103;BA.debugLine="End Sub";
 return "";
 }
 public static String  _process_globals() throws Exception{

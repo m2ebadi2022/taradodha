@@ -46,5 +46,6 @@ E:\b4a\b4a new projects\TaradodHa\Objects\dexed\ir\taravatgroup\taradodha\starte
 E:\b4a\b4a new projects\TaradodHa\Objects\dexed\ir\taravatgroup\taradodha\starter$2.dex
 E:\b4a\b4a new projects\TaradodHa\Objects\dexed\ir\taravatgroup\taradodha\starter$starter_BR.dex
 E:\b4a\b4a new projects\TaradodHa\Objects\dexed\ir\taravatgroup\taradodha\starter.dex
+E:\b4a\b4a new projects\TaradodHa\Objects\dexed\ir\taravatgroup\taradodha\designerscripts\LS_add_layout.dex
 E:\b4a\b4a new projects\TaradodHa\Objects\dexed\ir\taravatgroup\taradodha\designerscripts\LS_home_layout.dex
 E:\b4a\b4a new projects\TaradodHa\Objects\dexed\ir\taravatgroup\taradodha\designerscripts\LS_main_layout.dex

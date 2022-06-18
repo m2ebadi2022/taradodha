@@ -74,7 +74,22 @@ Sub add_taradod(date As String,vorod As String,khoroj As String,h As Int,m As In
 	Main.sql.Close
 	Return True
 End Sub
+Sub edit_taradod(id As Int,date As String,vorod As String,khoroj As String,h As Int,m As Int, tozih As String, state As Int) As Boolean
+	
+	connection_sql
+	Main.sql.ExecNonQuery2("UPDATE taradodha SET date=? , vorod=?, khoroj=?, tim_h=?, tim_m=?, tozih=?, state=? WHERE id=?;", Array As Object(date,vorod, khoroj, h,m,tozih,state,id))
+	Main.sql.Close
+	Return True
+End Sub
 
+Sub delete_taradod(id As Int) As Boolean
+	connection_sql
+	Main.sql.ExecNonQuery("DELETE FROM taradodha WHERE id="&id)
+	Main.sql.Close
+	Return True
+
+
+End Sub
 
 
 Sub time_show2 (dat1 As String, tim1 As String,tim2 As String) As List
