@@ -10,6 +10,8 @@ public static void LS_general(java.util.LinkedHashMap<String, anywheresoftware.b
 anywheresoftware.b4a.keywords.LayoutBuilder.setScaleRate(0.3);
 //BA.debugLineNum = 3;BA.debugLine="Panel6.HorizontalCenter=50%x"[add_layout/General script]
 views.get("panel6").vw.setLeft((int)((50d / 100 * width) - (views.get("panel6").vw.getWidth() / 2)));
+//BA.debugLineNum = 4;BA.debugLine="Panel6.VerticalCenter=40%y"[add_layout/General script]
+views.get("panel6").vw.setTop((int)((40d / 100 * height) - (views.get("panel6").vw.getHeight() / 2)));
 
 }
 }

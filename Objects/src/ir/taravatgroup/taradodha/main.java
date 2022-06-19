@@ -342,37 +342,35 @@ public static com.b4a.manamsoftware.PersianDate.ManamPersianDate _prsiandate = n
 public static adr.stringfunctions.stringfunctions _strfun = null;
 public b4a.example.dateutils _dateutils = null;
 public ir.taravatgroup.taradodha.starter _starter = null;
-public ir.taravatgroup.taradodha.home_activity _home_activity = null;
 public ir.taravatgroup.taradodha.add_activity _add_activity = null;
-public ir.taravatgroup.taradodha.list_activity _list_activity = null;
 public ir.taravatgroup.taradodha.myfunc _myfunc = null;
+public ir.taravatgroup.taradodha.splash_activity _splash_activity = null;
 
 public static boolean isAnyActivityVisible() {
     boolean vis = false;
 vis = vis | (main.mostCurrent != null);
-vis = vis | (home_activity.mostCurrent != null);
 vis = vis | (add_activity.mostCurrent != null);
-vis = vis | (list_activity.mostCurrent != null);
+vis = vis | (splash_activity.mostCurrent != null);
 return vis;}
 public static String  _activity_create(boolean _firsttime) throws Exception{
  //BA.debugLineNum = 29;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
  //BA.debugLineNum = 30;BA.debugLine="Activity.LoadLayout(\"main_layout\")";
 mostCurrent._activity.LoadLayout("main_layout",mostCurrent.activityBA);
- //BA.debugLineNum = 33;BA.debugLine="StartActivity(home_activity)";
-anywheresoftware.b4a.keywords.Common.StartActivity(processBA,(Object)(mostCurrent._home_activity.getObject()));
- //BA.debugLineNum = 34;BA.debugLine="Activity.Finish";
+ //BA.debugLineNum = 34;BA.debugLine="StartActivity(splash_activity)";
+anywheresoftware.b4a.keywords.Common.StartActivity(processBA,(Object)(mostCurrent._splash_activity.getObject()));
+ //BA.debugLineNum = 35;BA.debugLine="Activity.Finish";
 mostCurrent._activity.Finish();
- //BA.debugLineNum = 35;BA.debugLine="End Sub";
+ //BA.debugLineNum = 36;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_pause(boolean _userclosed) throws Exception{
- //BA.debugLineNum = 41;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
- //BA.debugLineNum = 43;BA.debugLine="End Sub";
+ //BA.debugLineNum = 42;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
+ //BA.debugLineNum = 44;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_resume() throws Exception{
- //BA.debugLineNum = 37;BA.debugLine="Sub Activity_Resume";
- //BA.debugLineNum = 39;BA.debugLine="End Sub";
+ //BA.debugLineNum = 38;BA.debugLine="Sub Activity_Resume";
+ //BA.debugLineNum = 40;BA.debugLine="End Sub";
 return "";
 }
 public static String  _globals() throws Exception{
@@ -389,10 +387,9 @@ public static void initializeProcessGlobals() {
 		        b4a.example.dateutils._process_globals();
 main._process_globals();
 starter._process_globals();
-home_activity._process_globals();
 add_activity._process_globals();
-list_activity._process_globals();
 myfunc._process_globals();
+splash_activity._process_globals();
 		
         } catch (Exception e) {
 			throw new RuntimeException(e);

@@ -14,9 +14,8 @@ public static Object getObject() {
 public b4a.example.dateutils _dateutils = null;
 public ir.taravatgroup.taradodha.main _main = null;
 public ir.taravatgroup.taradodha.starter _starter = null;
-public ir.taravatgroup.taradodha.home_activity _home_activity = null;
 public ir.taravatgroup.taradodha.add_activity _add_activity = null;
-public ir.taravatgroup.taradodha.list_activity _list_activity = null;
+public ir.taravatgroup.taradodha.splash_activity _splash_activity = null;
 public static boolean  _add_taradod(anywheresoftware.b4a.BA _ba,String _date,String _vorod,String _khoroj,int _h,int _m,String _tozih,int _state) throws Exception{
  //BA.debugLineNum = 65;BA.debugLine="Sub add_taradod(date As String,vorod As String,kho";
  //BA.debugLineNum = 66;BA.debugLine="connection_sql";
@@ -141,6 +140,66 @@ mostCurrent._main._res /*anywheresoftware.b4a.sql.SQL.ResultSetWrapper*/ .Close(
 if (true) return _list_result;
  //BA.debugLineNum = 54;BA.debugLine="End Sub";
 return null;
+}
+public static String  _get_day_name(anywheresoftware.b4a.BA _ba,String _date_per) throws Exception{
+String[] _date_l = null;
+String _day_index_name = "";
+String _date_miladi = "";
+String[] _date_l2 = null;
+int _day_index = 0;
+ //BA.debugLineNum = 184;BA.debugLine="Sub get_day_name (date_per As String) As String";
+ //BA.debugLineNum = 186;BA.debugLine="Dim date_l() As String";
+_date_l = new String[(int) (0)];
+java.util.Arrays.fill(_date_l,"");
+ //BA.debugLineNum = 187;BA.debugLine="date_l=Regex.Split(\"/\",date_per)";
+_date_l = anywheresoftware.b4a.keywords.Common.Regex.Split("/",_date_per);
+ //BA.debugLineNum = 188;BA.debugLine="Dim day_index_name As String=\"\"";
+_day_index_name = "";
+ //BA.debugLineNum = 190;BA.debugLine="Dim date_miladi As String=Main.prsianDate.Persian";
+_date_miladi = mostCurrent._main._prsiandate /*com.b4a.manamsoftware.PersianDate.ManamPersianDate*/ .PersianToGregorian((int)(Double.parseDouble(_date_l[(int) (0)])),(int)(Double.parseDouble(_date_l[(int) (1)])),(int)(Double.parseDouble(_date_l[(int) (2)])));
+ //BA.debugLineNum = 191;BA.debugLine="Dim date_l2() As String";
+_date_l2 = new String[(int) (0)];
+java.util.Arrays.fill(_date_l2,"");
+ //BA.debugLineNum = 192;BA.debugLine="date_l2=Regex.Split(\"/\",fa2en( date_miladi))";
+_date_l2 = anywheresoftware.b4a.keywords.Common.Regex.Split("/",_fa2en(_ba,_date_miladi));
+ //BA.debugLineNum = 194;BA.debugLine="Dim day_index As Int=DateTime.GetDayOfWeek(DateTi";
+_day_index = anywheresoftware.b4a.keywords.Common.DateTime.GetDayOfWeek(anywheresoftware.b4a.keywords.Common.DateTime.DateParse(_date_l2[(int) (1)]+"/"+_date_l2[(int) (2)]+"/"+_date_l2[(int) (0)]));
+ //BA.debugLineNum = 196;BA.debugLine="Select day_index";
+switch (_day_index) {
+case 7: {
+ //BA.debugLineNum = 198;BA.debugLine="day_index_name=\"شنبه\"";
+_day_index_name = "شنبه";
+ break; }
+case 1: {
+ //BA.debugLineNum = 200;BA.debugLine="day_index_name=\"یکشنبه\"";
+_day_index_name = "یکشنبه";
+ break; }
+case 2: {
+ //BA.debugLineNum = 202;BA.debugLine="day_index_name=\"دوشنبه\"";
+_day_index_name = "دوشنبه";
+ break; }
+case 3: {
+ //BA.debugLineNum = 204;BA.debugLine="day_index_name=\"سه شنبه\"";
+_day_index_name = "سه شنبه";
+ break; }
+case 4: {
+ //BA.debugLineNum = 206;BA.debugLine="day_index_name=\"چهارشنبه\"";
+_day_index_name = "چهارشنبه";
+ break; }
+case 5: {
+ //BA.debugLineNum = 208;BA.debugLine="day_index_name=\"پنجشنبه\"";
+_day_index_name = "پنجشنبه";
+ break; }
+case 6: {
+ //BA.debugLineNum = 210;BA.debugLine="day_index_name=\"جمعه\"";
+_day_index_name = "جمعه";
+ break; }
+}
+;
+ //BA.debugLineNum = 214;BA.debugLine="Return day_index_name";
+if (true) return _day_index_name;
+ //BA.debugLineNum = 215;BA.debugLine="End Sub";
+return "";
 }
 public static String  _process_globals() throws Exception{
  //BA.debugLineNum = 3;BA.debugLine="Sub Process_Globals";

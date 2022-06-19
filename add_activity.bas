@@ -49,6 +49,9 @@ Sub Globals
 	Dim dialog_tim As TimeDialog
 	
 	
+	Private lbl_day_name As Label
+	Private sp_mah As Spinner
+	Private et_sall As EditText
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
@@ -56,17 +59,74 @@ Sub Activity_Create(FirstTime As Boolean)
 	Activity.LoadLayout("add_layout")
 	et_date.Text=Main.prsianDate.PersianShortDate
 	
-	fill_list("1401","03")
+	
+	
+	sp_mah.Add("فروردین")
+	sp_mah.Add("اردیبهشت")
+	sp_mah.Add("خرداد")
+	sp_mah.Add("تیر")
+	sp_mah.Add("مرداد")
+	sp_mah.Add("شهریور")
+	sp_mah.Add("مهر")
+	sp_mah.Add("آبان")
+	sp_mah.Add("آذر")
+	sp_mah.Add("دی")
+	sp_mah.Add("بهمن")
+	sp_mah.Add("اسفند")
+
+
+
+	et_sall.Text=Main.prsianDate.PersianYear
+	sp_mah.SelectedIndex=Main.prsianDate.PersianMonth-1
+
+
+	fill_list
+	
+	
 	dialog_tim.Is24Hours=True
 End Sub
 
-Sub fill_list(sal As String , mah As String)
+Sub fill_list
+	
+	Dim sal As String=et_sall.Text
+	Dim mah As String="03"
+	
+	
+	
+	
+	Select sp_mah.SelectedIndex
+		Case 0
+			mah="01"
+		Case 1
+			mah="02"
+		Case 2
+			mah="03"
+		Case 3
+			mah="04"
+		Case 4
+			mah="05"
+		Case 5
+			mah="06"
+		Case 6
+			mah="07"
+		Case 4
+			mah="08"
+		Case 8
+			mah="09"
+		Case 9
+			mah="10"
+		Case 10
+			mah="11"
+		Case 11
+			mah="12"
+			
+	End Select
+	
+	
+	
 	Dim list1 As List
 	list1.Initialize
 	list1=myFunc.get_data(sal,mah)
-	
-	
-	
 	
 	
 	
@@ -79,7 +139,7 @@ Sub fill_list(sal As String , mah As String)
 	
 	For i=0 To list1.Size-1
 		p = xui.CreatePanel("p")
-		p.SetLayoutAnimated(0, 0, 0, 95%x, 120dip)
+		p.SetLayoutAnimated(0, 0, 0, 95%x, 110dip)
 		p.LoadLayout("irem_data")
 		Dim list2() As String=list1.Get(i)
 		
@@ -91,6 +151,8 @@ Sub fill_list(sal As String , mah As String)
 		lbl_khoroj_item.Text=list2(3)
 		lbl_tozih_item.Text=list2(6)
 		
+		lbl_day_name.Text=myFunc.get_day_name(list2(1))
+		
 		all_tim_h=all_tim_h+list2(4)
 		all_tim_m=all_tim_m+list2(5)
 		
@@ -101,7 +163,7 @@ Sub fill_list(sal As String , mah As String)
 		all_tim_m=all_tim_m Mod 60
 	End If
 	
-	lbl_show_allTime.Text=all_tim_h &"ساعت و "&all_tim_m &"دقیقه "
+	lbl_show_allTime.Text=all_tim_h &" ساعت و "&all_tim_m &" دقیقه "
 End Sub
 Sub Activity_Resume
 
@@ -112,24 +174,20 @@ Sub Activity_Pause (UserClosed As Boolean)
 End Sub
 
 
-Private Sub lbl_back_Click
-	StartActivity(home_activity)
-	Activity.Finish
-End Sub
-
 Private Sub lbl_save_Click
 	
 	Dim res_H_M As List =myFunc.time_show2(et_date.Text,lbl_vorod_time.Text,lbl_khoroj_time.Text)
 	
 	
 	myFunc.add_taradod(et_date.Text,lbl_vorod_time.Text,lbl_khoroj_time.Text,res_H_M.Get(0),res_H_M.Get(1),et_tozih.Text,0)
-	fill_list("1401","03")
+	fill_list
 	et_tozih.Text=""
+	ToastMessageShow("تردد ذخیره شد",False)
 End Sub
 
 Sub show_tim_lbl1
 	Dim res_H_M As List =myFunc.time_show2(et_date.Text,lbl_vorod_time.Text,lbl_khoroj_time.Text)
-	lbl_show_time.Text="ساعت "&res_H_M.Get(0)&" و "&res_H_M.Get(1)&"دقیقه "
+	lbl_show_time.Text=" ساعت "&res_H_M.Get(0)&" و "&res_H_M.Get(1)&" دقیقه "
 End Sub
 
 
@@ -204,8 +262,8 @@ Private Sub lbl_save_edit_Click
 	myFunc.edit_taradod(current_id,et_date_edit.Text,lbl_vorod_time_edit.Text,lbl_khoroj_time_edit.Text,res_H_M.Get(0),res_H_M.Get(1),et_tozih_edit.Text,1)
 	
 	pan_all_edit.Visible=False
-	fill_list("1401","03")
-	
+	fill_list
+	ToastMessageShow("تردد ویرایش شد",False)
 End Sub
 
 Private Sub lbl_delete_edit_Click
@@ -214,7 +272,7 @@ Private Sub lbl_delete_edit_Click
 	If result = DialogResponse.Positive Then 
 		myFunc.delete_taradod(current_id)
 		pan_all_edit.Visible=False
-		fill_list("1401","03")
+		fill_list
 	End If
 	
 	
@@ -288,4 +346,12 @@ Private Sub lbl_khoroj_time_Click
 	End If
 	
 	
+End Sub
+
+Private Sub Panel6_Click
+	
+End Sub
+
+Private Sub lbl_show_list_Click
+	fill_list
 End Sub

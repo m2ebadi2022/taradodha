@@ -185,3 +185,38 @@ Sub time_show2 (dat1 As String, tim1 As String,tim2 As String) As List
 End Sub
 
 
+
+
+Sub get_day_name (date_per As String) As String
+	
+	Dim date_l() As String
+	date_l=Regex.Split("/",date_per)
+	Dim day_index_name As String=""
+		
+	Dim date_miladi As String=Main.prsianDate.PersianToGregorian(date_l(0),date_l(1),date_l(2))
+	Dim date_l2() As String
+	date_l2=Regex.Split("/",fa2en( date_miladi))
+		
+	Dim day_index As Int=DateTime.GetDayOfWeek(DateTime.DateParse(date_l2(1)&"/"&date_l2(2)&"/"&date_l2(0)))
+		
+	Select day_index
+		Case 7
+			day_index_name="شنبه"
+		Case 1
+			day_index_name="یکشنبه"
+		Case 2
+			day_index_name="دوشنبه"
+		Case 3
+			day_index_name="سه شنبه"
+		Case 4
+			day_index_name="چهارشنبه"
+		Case 5
+			day_index_name="پنجشنبه"
+		Case 6
+			day_index_name="جمعه"
+				
+	End Select
+
+	Return day_index_name
+End Sub
+

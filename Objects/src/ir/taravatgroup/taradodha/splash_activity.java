@@ -14,8 +14,8 @@ import anywheresoftware.b4a.B4AUncaughtException;
 import anywheresoftware.b4a.debug.*;
 import java.lang.ref.WeakReference;
 
-public class home_activity extends Activity implements B4AActivity{
-	public static home_activity mostCurrent;
+public class splash_activity extends Activity implements B4AActivity{
+	public static splash_activity mostCurrent;
 	static boolean afterFirstLayout;
 	static boolean isFirst = true;
     private static boolean processGlobalsRun = false;
@@ -34,7 +34,7 @@ public class home_activity extends Activity implements B4AActivity{
 		super.onCreate(savedInstanceState);
         mostCurrent = this;
 		if (processBA == null) {
-			processBA = new BA(this.getApplicationContext(), null, null, "ir.taravatgroup.taradodha", "ir.taravatgroup.taradodha.home_activity");
+			processBA = new BA(this.getApplicationContext(), null, null, "ir.taravatgroup.taradodha", "ir.taravatgroup.taradodha.splash_activity");
 			processBA.loadHtSubs(this.getClass());
 	        float deviceScale = getApplicationContext().getResources().getDisplayMetrics().density;
 	        BALayout.setDeviceScale(deviceScale);
@@ -43,7 +43,7 @@ public class home_activity extends Activity implements B4AActivity{
 		else if (previousOne != null) {
 			Activity p = previousOne.get();
 			if (p != null && p != this) {
-                BA.LogInfo("Killing previous instance (home_activity).");
+                BA.LogInfo("Killing previous instance (splash_activity).");
 				p.finish();
 			}
 		}
@@ -86,7 +86,7 @@ public class home_activity extends Activity implements B4AActivity{
 	private void afterFirstLayout() {
         if (this != mostCurrent)
 			return;
-		activityBA = new BA(this, layout, processBA, "ir.taravatgroup.taradodha", "ir.taravatgroup.taradodha.home_activity");
+		activityBA = new BA(this, layout, processBA, "ir.taravatgroup.taradodha", "ir.taravatgroup.taradodha.splash_activity");
         
         processBA.sharedProcessBA.activityBA = new java.lang.ref.WeakReference<BA>(activityBA);
         anywheresoftware.b4a.objects.ViewWrapper.lastId = 0;
@@ -95,19 +95,19 @@ public class home_activity extends Activity implements B4AActivity{
         if (BA.isShellModeRuntimeCheck(processBA)) {
 			if (isFirst)
 				processBA.raiseEvent2(null, true, "SHELL", false);
-			processBA.raiseEvent2(null, true, "CREATE", true, "ir.taravatgroup.taradodha.home_activity", processBA, activityBA, _activity, anywheresoftware.b4a.keywords.Common.Density, mostCurrent);
+			processBA.raiseEvent2(null, true, "CREATE", true, "ir.taravatgroup.taradodha.splash_activity", processBA, activityBA, _activity, anywheresoftware.b4a.keywords.Common.Density, mostCurrent);
 			_activity.reinitializeForShell(activityBA, "activity");
 		}
         initializeProcessGlobals();		
         initializeGlobals();
         
-        BA.LogInfo("** Activity (home_activity) Create, isFirst = " + isFirst + " **");
+        BA.LogInfo("** Activity (splash_activity) Create, isFirst = " + isFirst + " **");
         processBA.raiseEvent2(null, true, "activity_create", false, isFirst);
 		isFirst = false;
 		if (this != mostCurrent)
 			return;
         processBA.setActivityPaused(false);
-        BA.LogInfo("** Activity (home_activity) Resume **");
+        BA.LogInfo("** Activity (splash_activity) Resume **");
         processBA.raiseEvent(null, "activity_resume");
         if (android.os.Build.VERSION.SDK_INT >= 11) {
 			try {
@@ -196,7 +196,7 @@ public class home_activity extends Activity implements B4AActivity{
 		}
 	}
     public static Class<?> getObject() {
-		return home_activity.class;
+		return splash_activity.class;
 	}
     private Boolean onKeySubExist = null;
     private Boolean onKeyUpSubExist = null;
@@ -268,9 +268,9 @@ public class home_activity extends Activity implements B4AActivity{
 			return;
 		anywheresoftware.b4a.Msgbox.dismiss(true);
         if (!dontPause)
-            BA.LogInfo("** Activity (home_activity) Pause, UserClosed = " + activityBA.activity.isFinishing() + " **");
+            BA.LogInfo("** Activity (splash_activity) Pause, UserClosed = " + activityBA.activity.isFinishing() + " **");
         else
-            BA.LogInfo("** Activity (home_activity) Pause event (activity is not paused). **");
+            BA.LogInfo("** Activity (splash_activity) Pause event (activity is not paused). **");
         if (mostCurrent != null)
             processBA.raiseEvent2(_activity, true, "activity_pause", false, activityBA.activity.isFinishing());		
         if (!dontPause) {
@@ -307,11 +307,11 @@ public class home_activity extends Activity implements B4AActivity{
     		this.activity = new WeakReference<Activity>(activity);
     	}
 		public void run() {
-            home_activity mc = mostCurrent;
+            splash_activity mc = mostCurrent;
 			if (mc == null || mc != activity.get())
 				return;
 			processBA.setActivityPaused(false);
-            BA.LogInfo("** Activity (home_activity) Resume **");
+            BA.LogInfo("** Activity (splash_activity) Resume **");
             if (mc != mostCurrent)
                 return;
 		    processBA.raiseEvent(mc._activity, "activity_resume", (Object[])null);
@@ -336,11 +336,11 @@ public class home_activity extends Activity implements B4AActivity{
     }
 
 public anywheresoftware.b4a.keywords.Common __c = null;
+public static anywheresoftware.b4a.objects.Timer _tim1 = null;
 public b4a.example.dateutils _dateutils = null;
 public ir.taravatgroup.taradodha.main _main = null;
 public ir.taravatgroup.taradodha.starter _starter = null;
 public ir.taravatgroup.taradodha.add_activity _add_activity = null;
-public ir.taravatgroup.taradodha.list_activity _list_activity = null;
 public ir.taravatgroup.taradodha.myfunc _myfunc = null;
 
 public static void initializeProcessGlobals() {
@@ -354,23 +354,25 @@ public static String  _activity_create(boolean _firsttime) throws Exception{
  //BA.debugLineNum = 18;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
  //BA.debugLineNum = 20;BA.debugLine="Activity.LoadLayout(\"home_layout\")";
 mostCurrent._activity.LoadLayout("home_layout",mostCurrent.activityBA);
- //BA.debugLineNum = 22;BA.debugLine="End Sub";
+ //BA.debugLineNum = 21;BA.debugLine="tim1.Initialize(\"tim1\",1000)";
+_tim1.Initialize(processBA,"tim1",(long) (1000));
+ //BA.debugLineNum = 22;BA.debugLine="tim1.Enabled=True";
+_tim1.setEnabled(anywheresoftware.b4a.keywords.Common.True);
+ //BA.debugLineNum = 23;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_pause(boolean _userclosed) throws Exception{
- //BA.debugLineNum = 28;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
- //BA.debugLineNum = 30;BA.debugLine="End Sub";
+ //BA.debugLineNum = 29;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
+ //BA.debugLineNum = 31;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_resume() throws Exception{
- //BA.debugLineNum = 24;BA.debugLine="Sub Activity_Resume";
- //BA.debugLineNum = 26;BA.debugLine="End Sub";
+ //BA.debugLineNum = 25;BA.debugLine="Sub Activity_Resume";
+ //BA.debugLineNum = 27;BA.debugLine="End Sub";
 return "";
 }
 public static String  _add_page_click() throws Exception{
- //BA.debugLineNum = 33;BA.debugLine="Private Sub add_page_Click";
- //BA.debugLineNum = 34;BA.debugLine="StartActivity(add_activity)";
-anywheresoftware.b4a.keywords.Common.StartActivity(processBA,(Object)(mostCurrent._add_activity.getObject()));
+ //BA.debugLineNum = 34;BA.debugLine="Private Sub add_page_Click";
  //BA.debugLineNum = 36;BA.debugLine="End Sub";
 return "";
 }
@@ -379,16 +381,22 @@ public static String  _globals() throws Exception{
  //BA.debugLineNum = 16;BA.debugLine="End Sub";
 return "";
 }
-public static String  _list_page_click() throws Exception{
- //BA.debugLineNum = 38;BA.debugLine="Private Sub list_page_Click";
- //BA.debugLineNum = 39;BA.debugLine="StartActivity(list_activity)";
-anywheresoftware.b4a.keywords.Common.StartActivity(processBA,(Object)(mostCurrent._list_activity.getObject()));
- //BA.debugLineNum = 41;BA.debugLine="End Sub";
-return "";
-}
 public static String  _process_globals() throws Exception{
  //BA.debugLineNum = 6;BA.debugLine="Sub Process_Globals";
+ //BA.debugLineNum = 9;BA.debugLine="Dim tim1 As Timer";
+_tim1 = new anywheresoftware.b4a.objects.Timer();
  //BA.debugLineNum = 10;BA.debugLine="End Sub";
+return "";
+}
+public static String  _tim1_tick() throws Exception{
+ //BA.debugLineNum = 38;BA.debugLine="Sub tim1_Tick";
+ //BA.debugLineNum = 39;BA.debugLine="StartActivity(add_activity)";
+anywheresoftware.b4a.keywords.Common.StartActivity(processBA,(Object)(mostCurrent._add_activity.getObject()));
+ //BA.debugLineNum = 40;BA.debugLine="tim1.Enabled=False";
+_tim1.setEnabled(anywheresoftware.b4a.keywords.Common.False);
+ //BA.debugLineNum = 41;BA.debugLine="Activity.Finish";
+mostCurrent._activity.Finish();
+ //BA.debugLineNum = 42;BA.debugLine="End Sub";
 return "";
 }
 }

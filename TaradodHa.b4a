@@ -2,8 +2,8 @@
 File1=add_layout.bal
 File2=home_layout.bal
 File3=irem_data.bal
-File4=list_layout.bal
-File5=main_layout.bal
+File4=main_layout.bal
+File5=Screenshot 2022-06-19 162429.jpg
 FileGroup1=Default Group
 FileGroup2=Default Group
 FileGroup3=Default Group
@@ -20,13 +20,12 @@ Library7=xui
 Library8=dialogs
 ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="14" android:targetSdkVersion="30"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~CreateResourceFromFile(Macro, Themes.LightTheme)~\n~'End of default text.~\n~
 Module1=add_activity
-Module2=home_activity
-Module3=list_activity
-Module4=myFunc
-Module5=Starter
+Module2=myFunc
+Module3=splash_activity
+Module4=Starter
 NumberOfFiles=5
 NumberOfLibraries=8
-NumberOfModules=5
+NumberOfModules=4
 Version=11.5
 @EndOfDesignText@
 #Region  Project Attributes 
@@ -61,7 +60,8 @@ Sub Activity_Create(FirstTime As Boolean)
 	Activity.LoadLayout("main_layout")
 	
 	
-	StartActivity(home_activity)
+	
+	StartActivity(splash_activity)
 	Activity.Finish
 End Sub
 
@@ -72,3 +72,4 @@ End Sub
 Sub Activity_Pause (UserClosed As Boolean)
 
 End Sub
+
