@@ -1,5 +1,6 @@
 package ir.taravatgroup.taradodha;
 
+import android.os.StrictMode;
 
 import anywheresoftware.b4a.BA;
 import anywheresoftware.b4a.objects.ServiceHelper;
@@ -125,42 +126,54 @@ public class starter extends  android.app.Service{
 	public android.os.IBinder onBind(android.content.Intent intent) {
 		return null;
 	}public anywheresoftware.b4a.keywords.Common __c = null;
+public static ir.taravatgroup.taradodha.fileprovider _provider = null;
 public b4a.example.dateutils _dateutils = null;
 public ir.taravatgroup.taradodha.main _main = null;
 public ir.taravatgroup.taradodha.add_activity _add_activity = null;
 public ir.taravatgroup.taradodha.myfunc _myfunc = null;
 public static boolean  _application_error(anywheresoftware.b4a.objects.B4AException _error,String _stacktrace) throws Exception{
- //BA.debugLineNum = 27;BA.debugLine="Sub Application_Error (Error As Exception, StackTr";
- //BA.debugLineNum = 28;BA.debugLine="Return True";
+ //BA.debugLineNum = 41;BA.debugLine="Sub Application_Error (Error As Exception, StackTr";
+ //BA.debugLineNum = 42;BA.debugLine="Return True";
 if (true) return anywheresoftware.b4a.keywords.Common.True;
- //BA.debugLineNum = 29;BA.debugLine="End Sub";
+ //BA.debugLineNum = 43;BA.debugLine="End Sub";
 return false;
 }
 public static String  _process_globals() throws Exception{
  //BA.debugLineNum = 6;BA.debugLine="Sub Process_Globals";
+ //BA.debugLineNum = 9;BA.debugLine="Dim Provider As FileProvider";
+_provider = new ir.taravatgroup.taradodha.fileprovider();
  //BA.debugLineNum = 10;BA.debugLine="End Sub";
 return "";
 }
 public static String  _service_create() throws Exception{
  //BA.debugLineNum = 12;BA.debugLine="Sub Service_Create";
+ //BA.debugLineNum = 15;BA.debugLine="Provider.Initialize";
+_provider._initialize /*String*/ (processBA);
  //BA.debugLineNum = 16;BA.debugLine="End Sub";
 return "";
 }
 public static String  _service_destroy() throws Exception{
- //BA.debugLineNum = 31;BA.debugLine="Sub Service_Destroy";
- //BA.debugLineNum = 33;BA.debugLine="End Sub";
+ //BA.debugLineNum = 45;BA.debugLine="Sub Service_Destroy";
+ //BA.debugLineNum = 47;BA.debugLine="End Sub";
 return "";
 }
 public static String  _service_start(anywheresoftware.b4a.objects.IntentWrapper _startingintent) throws Exception{
  //BA.debugLineNum = 18;BA.debugLine="Sub Service_Start (StartingIntent As Intent)";
  //BA.debugLineNum = 19;BA.debugLine="Service.StopAutomaticForeground 'Starter service";
 mostCurrent._service.StopAutomaticForeground();
- //BA.debugLineNum = 20;BA.debugLine="End Sub";
+ //BA.debugLineNum = 34;BA.debugLine="End Sub";
 return "";
 }
 public static String  _service_taskremoved() throws Exception{
- //BA.debugLineNum = 22;BA.debugLine="Sub Service_TaskRemoved";
- //BA.debugLineNum = 24;BA.debugLine="End Sub";
+ //BA.debugLineNum = 36;BA.debugLine="Sub Service_TaskRemoved";
+ //BA.debugLineNum = 38;BA.debugLine="End Sub";
 return "";
 }
+public void _onCreate() { //@cafetoseeh
+if (android.os.Build.VERSION.SDK_INT >= 18) {
+StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+StrictMode.setVmPolicy(builder.build());
+//cafetoseeh.ir
+builder.detectFileUriExposure();
+}}
 }

@@ -12,17 +12,31 @@ Version=9.9
 Sub Process_Globals
 	'These global variables will be declared once when the application starts.
 	'These variables can be accessed from all modules.
-
+	Dim Provider As FileProvider
 End Sub
 
 Sub Service_Create
 	'This is the program entry point.
 	'This is a good place to load resources that are not specific to a single activity.
-
+	Provider.Initialize
 End Sub
 
 Sub Service_Start (StartingIntent As Intent)
 	Service.StopAutomaticForeground 'Starter service can start in the foreground state in some edge cases.
+
+	
+	
+#if java
+import android.os.StrictMode;
+public void _onCreate() { //@cafetoseeh
+if (android.os.Build.VERSION.SDK_INT >= 18) {
+StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+StrictMode.setVmPolicy(builder.build());
+//cafetoseeh.ir
+builder.detectFileUriExposure();
+}}
+#End If
+	
 End Sub
 
 Sub Service_TaskRemoved

@@ -12,7 +12,7 @@ Version=11.5
 Sub Process_Globals
 	'These global variables will be declared once when the application starts.
 	'These variables can be accessed from all modules.
-
+Dim vb As PhoneVibrate
 End Sub
 
 Sub Globals
@@ -58,11 +58,14 @@ Sub Globals
 	Private sp_date_moon As Spinner
 	
 	Dim date_str As String=""
+	Dim str_html As StringBuilder
+	Dim FileName As String=""
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
 	'Do not forget to load the layout file created with the visual designer. For example:
 	Activity.LoadLayout("add_layout")
+	
 	
 	
 	sp_date_year.Padding=Array As Int(4dip,4dip,25dip,4dip)
@@ -133,6 +136,17 @@ Sub Activity_Create(FirstTime As Boolean)
 	
 	
 	dialog_tim.Is24Hours=True
+	
+	If(File.Exists(File.DirInternal,"save_temp"))Then
+		Dim ls_temp_tim As List
+		ls_temp_tim.Initialize
+		ls_temp_tim=File.ReadList(File.DirInternal,"save_temp")
+		
+		lbl_vorod_time.Text=ls_temp_tim.Get(0)
+		lbl_khoroj_time.Text=ls_temp_tim.Get(1)
+		show_tim_lbl1
+	End If
+	
 End Sub
 
 Sub date_generat
@@ -174,9 +188,33 @@ Sub fill_list
 	Dim sal As String=et_sall.Text
 	Dim mah As String="03"
 	
-	
+	str_html.Initialize
 	
 	mah=convert_add(sp_mah.SelectedIndex+1)
+	
+	FileName="TaradodHa-"&sal&"-"&mah&".html"
+		
+	str_html.Append("<html dir='rtl'><meta charset='UTF-8' />  <meta name='viewport' content='width=device-width, initial-scale=1.0' />")
+	
+	str_html.Append("<head><style>table, th, td {border: 1px solid black;border-collapse: collapse;}</style></head><body>")
+	
+	
+	str_html.Append("<h4 align='center' >گزارش تردد ها</h4>")
+	str_html.Append("<h6 align='center' >"&sal&"/"&mah&"</h6>")
+	
+	
+	str_html.Append("<table style='width:100%'><tr>")
+	str_html.Append("<th>ردیف</th>")
+	str_html.Append("<th>تاریخ</th>")
+	str_html.Append("<th>ورود</th>")
+	str_html.Append("<th>خروج</th>")
+	str_html.Append("<th>توضیحات</th>")
+	str_html.Append("</tr>")
+	
+	
+	
+	
+	
 	
 	
 	Dim list1 As List
@@ -193,6 +231,7 @@ Sub fill_list
 	
 	
 	For i=0 To list1.Size-1
+		
 		p = xui.CreatePanel("p")
 		p.SetLayoutAnimated(0, 0, 0, 95%x, 110dip)
 		p.LoadLayout("irem_data")
@@ -212,7 +251,24 @@ Sub fill_list
 		all_tim_h=all_tim_h+list2(4)
 		all_tim_m=all_tim_m+list2(5)
 		
+		
+		str_html.Append("<tr>")
+		str_html.Append("<td>"&(i+1)&"</td>")
+		str_html.Append("<td>"&list2(1)&"</td>")
+		str_html.Append("<td>"&list2(2)&"</td>")
+		str_html.Append("<td>"&list2(3)&"</td>")
+		str_html.Append("<td>"&list2(6)&"</td>")
+		str_html.Append("</tr>")
+	
+		
+		
+		
+		
+	
+		
 	Next
+	
+	
 	
 	If(all_tim_m>59)Then
 		all_tim_h=all_tim_h+(all_tim_m / 60)
@@ -220,6 +276,15 @@ Sub fill_list
 	End If
 	
 	lbl_show_allTime.Text=all_tim_h &" ساعت و "&all_tim_m &" دقیقه "
+	
+	
+	
+	str_html.Append("</table>")
+	
+	
+	str_html.Append("<h4>مجموع ساعات : "&lbl_show_allTime.Text&"</h4>")
+	str_html.Append("</body></html>")
+	
 End Sub
 Sub Activity_Resume
 
@@ -240,6 +305,7 @@ Private Sub lbl_save_Click
 		fill_list
 		et_tozih.Text=""
 		ToastMessageShow("تردد ذخیره شد",False)
+		vb.Vibrate(300)
 	Catch
 		ToastMessageShow("خطا در ثبت",False)
 		Log(LastException)
@@ -265,7 +331,7 @@ Private Sub lbl_khoroj_tap_Click
 	lbl_khoroj_time.Text=tim_str
 	
 	show_tim_lbl1
-	
+	save_temp
 End Sub
 
 Private Sub lbl_vorod_tap_Click
@@ -275,7 +341,7 @@ Private Sub lbl_vorod_tap_Click
 	
 	
 	show_tim_lbl1
-	
+	save_temp
 	
 End Sub
 
@@ -327,6 +393,7 @@ Private Sub lbl_save_edit_Click
 		pan_all_edit.Visible=False
 		fill_list
 		ToastMessageShow("تردد ویرایش شد",False)
+		
 	Catch
 		ToastMessageShow("خطا در ویرایش ",False)
 		Log(LastException)
@@ -384,6 +451,20 @@ Private Sub lbl_vorod_time_Click
 		
 		show_tim_lbl1
 	End If
+	save_temp
+	
+End Sub
+
+Sub save_temp
+	
+	Dim ls_save As List
+	ls_save.Initialize
+	
+	ls_save.Add(lbl_vorod_time.Text)
+	ls_save.Add(lbl_khoroj_time.Text)
+	
+	File.WriteList(File.DirInternal,"save_temp",ls_save)
+	vb.Vibrate(400)
 End Sub
 
 Private Sub lbl_khoroj_time_Click
@@ -400,7 +481,7 @@ Private Sub lbl_khoroj_time_Click
 		
 		show_tim_lbl1
 	End If
-	
+	save_temp
 	
 End Sub
 
@@ -444,3 +525,20 @@ Sub Activity_KeyPress (KeyCode As Int) As Boolean
 		Return False
 	End If
 End Sub
+
+
+Private Sub lbl_share_Click
+	
+	File.WriteString(Starter.Provider.SharedFolder,FileName,str_html)
+	
+	Dim email As Email
+	email.To.Add("aaa@bbb.com")
+	email.Subject = "subject"
+	email.Body = ""
+	email.Attachments.Add(Starter.Provider.GetFileUri(FileName))
+	
+	Dim in As Intent = email.GetIntent
+	in.Flags = 1 'FLAG_GRANT_READ_URI_PERMISSION
+	StartActivity(in)
+End Sub
+

@@ -12,11 +12,24 @@
 	    android:smallScreens="true" 
 	    android:anyDensity="true"/>
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+	<uses-permission android:name="android.permission.VIBRATE"/>
 	<uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+	<uses-permission android:name="android.permission.PERMISSION_READ_EXTERNAL_STORAGE"/>
+	<uses-permission android:name="android.permission.PERMISSION_WRITE_EXTERNAL_STORAGE"/>
 	<application
 		android:icon="@drawable/icon"
 		android:label="ثبت ترددها"
 		android:theme="@style/LightTheme">
+		
+		<provider
+		  android:name="androidx.core.content.FileProvider"
+		  android:authorities="ir.taravatgroup.taradodha.provider"
+		  android:exported="false"
+		  android:grantUriPermissions="true">
+		  <meta-data
+		  android:name="android.support.FILE_PROVIDER_PATHS"
+		  android:resource="@xml/provider_paths"/>
+		  </provider>
 		<activity
 			android:windowSoftInputMode="stateHidden"
 			android:launchMode="singleTop"
