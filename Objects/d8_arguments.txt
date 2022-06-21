@@ -30,16 +30,9 @@ E:\b4a\b4a new projects\TaradodHa\Objects\dexed\ir\taravatgroup\taradodha\myfunc
 E:\b4a\b4a new projects\TaradodHa\Objects\dexed\ir\taravatgroup\taradodha\R$drawable.dex
 E:\b4a\b4a new projects\TaradodHa\Objects\dexed\ir\taravatgroup\taradodha\R$style.dex
 E:\b4a\b4a new projects\TaradodHa\Objects\dexed\ir\taravatgroup\taradodha\R.dex
-E:\b4a\b4a new projects\TaradodHa\Objects\dexed\ir\taravatgroup\taradodha\splash_activity$1.dex
-E:\b4a\b4a new projects\TaradodHa\Objects\dexed\ir\taravatgroup\taradodha\splash_activity$B4AMenuItemsClickListener.dex
-E:\b4a\b4a new projects\TaradodHa\Objects\dexed\ir\taravatgroup\taradodha\splash_activity$HandleKeyDelayed.dex
-E:\b4a\b4a new projects\TaradodHa\Objects\dexed\ir\taravatgroup\taradodha\splash_activity$ResumeMessage.dex
-E:\b4a\b4a new projects\TaradodHa\Objects\dexed\ir\taravatgroup\taradodha\splash_activity$WaitForLayout.dex
-E:\b4a\b4a new projects\TaradodHa\Objects\dexed\ir\taravatgroup\taradodha\splash_activity.dex
 E:\b4a\b4a new projects\TaradodHa\Objects\dexed\ir\taravatgroup\taradodha\starter$1.dex
 E:\b4a\b4a new projects\TaradodHa\Objects\dexed\ir\taravatgroup\taradodha\starter$2.dex
 E:\b4a\b4a new projects\TaradodHa\Objects\dexed\ir\taravatgroup\taradodha\starter$starter_BR.dex
 E:\b4a\b4a new projects\TaradodHa\Objects\dexed\ir\taravatgroup\taradodha\starter.dex
 E:\b4a\b4a new projects\TaradodHa\Objects\dexed\ir\taravatgroup\taradodha\designerscripts\LS_add_layout.dex
 E:\b4a\b4a new projects\TaradodHa\Objects\dexed\ir\taravatgroup\taradodha\designerscripts\LS_home_layout.dex
-E:\b4a\b4a new projects\TaradodHa\Objects\dexed\ir\taravatgroup\taradodha\designerscripts\LS_main_layout.dex

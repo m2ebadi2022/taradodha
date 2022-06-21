@@ -129,7 +129,6 @@ public b4a.example.dateutils _dateutils = null;
 public ir.taravatgroup.taradodha.main _main = null;
 public ir.taravatgroup.taradodha.add_activity _add_activity = null;
 public ir.taravatgroup.taradodha.myfunc _myfunc = null;
-public ir.taravatgroup.taradodha.splash_activity _splash_activity = null;
 public static boolean  _application_error(anywheresoftware.b4a.objects.B4AException _error,String _stacktrace) throws Exception{
  //BA.debugLineNum = 27;BA.debugLine="Sub Application_Error (Error As Exception, StackTr";
  //BA.debugLineNum = 28;BA.debugLine="Return True";

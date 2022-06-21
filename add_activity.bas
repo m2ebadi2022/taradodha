@@ -20,7 +20,7 @@ Sub Globals
 	'These variables can only be accessed from this module.
 
 	Private et_tozih As EditText
-	Private et_date As EditText
+	
 	Private lbl_khoroj_time As Label
 	Private lbl_vorod_time As Label
 	Private cusListV_data As CustomListView
@@ -52,15 +52,64 @@ Sub Globals
 	Private lbl_day_name As Label
 	Private sp_mah As Spinner
 	Private et_sall As EditText
+	Private lbl_del_item As Label
+	Private sp_date_day As Spinner
+	Private sp_date_year As Spinner
+	Private sp_date_moon As Spinner
+	
+	Dim date_str As String=""
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
 	'Do not forget to load the layout file created with the visual designer. For example:
 	Activity.LoadLayout("add_layout")
-	et_date.Text=Main.prsianDate.PersianShortDate
+	
+	
+	sp_date_year.Padding=Array As Int(4dip,4dip,25dip,4dip)
+	sp_date_year.Add("1400")
+	sp_date_year.Add("1401")
+	sp_date_year.Add("1402")
+	sp_date_year.Add("1403")
+	sp_date_year.Add("1404")
+	sp_date_year.Add("1405")
+	sp_date_year.Add("1406")
+	sp_date_year.Add("1407")
+	sp_date_year.Add("1408")
+	sp_date_year.Add("1409")
+	sp_date_year.Add("1410")
+	
+	
+	sp_date_moon.Padding=Array As Int(4dip,4dip,25dip,4dip)
+	sp_date_moon.Add("فروردین")
+	sp_date_moon.Add("اردیبهشت")
+	sp_date_moon.Add("خرداد")
+	sp_date_moon.Add("تیر")
+	sp_date_moon.Add("مرداد")
+	sp_date_moon.Add("شهریور")
+	sp_date_moon.Add("مهر")
+	sp_date_moon.Add("آبان")
+	sp_date_moon.Add("آذر")
+	sp_date_moon.Add("دی")
+	sp_date_moon.Add("بهمن")
+	sp_date_moon.Add("اسفند")
+	
+	sp_date_day.Padding=Array As Int(4dip,4dip,25dip,4dip)
+	sp_date_day.AddAll(Array As String("01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31"))
 	
 	
 	
+	
+	
+	sp_date_year.SelectedIndex=1
+	sp_date_moon.SelectedIndex=Main.prsianDate.PersianMonth-1
+	sp_date_day.SelectedIndex=Main.prsianDate.PersianDay-1
+	date_str=Main.prsianDate.PersianShortDate
+	
+	
+
+	
+	
+	sp_mah.Padding=Array As Int(4dip,4dip,25dip,4dip)
 	sp_mah.Add("فروردین")
 	sp_mah.Add("اردیبهشت")
 	sp_mah.Add("خرداد")
@@ -86,6 +135,40 @@ Sub Activity_Create(FirstTime As Boolean)
 	dialog_tim.Is24Hours=True
 End Sub
 
+Sub date_generat
+	date_str=sp_date_year.SelectedItem&"/"&convert_add(sp_date_moon.SelectedIndex+1)&"/"&sp_date_day.SelectedItem
+End Sub
+
+Sub convert_add (adad As Int) As String
+	
+	Dim res As String=adad
+	Select adad
+		Case 0
+			res="00"
+		Case 1
+			res="01"
+		Case 2
+			res="02"
+		Case 3
+			res="03"
+		Case 4
+			res="04"
+		Case 5
+			res="05"
+		Case 6
+			res="06"
+		Case 7
+			res="07"
+		Case 8
+			res="08"
+		Case 9
+			res="09"
+	End Select
+	
+
+	Return res
+End Sub
+
 Sub fill_list
 	
 	Dim sal As String=et_sall.Text
@@ -93,35 +176,7 @@ Sub fill_list
 	
 	
 	
-	
-	Select sp_mah.SelectedIndex
-		Case 0
-			mah="01"
-		Case 1
-			mah="02"
-		Case 2
-			mah="03"
-		Case 3
-			mah="04"
-		Case 4
-			mah="05"
-		Case 5
-			mah="06"
-		Case 6
-			mah="07"
-		Case 4
-			mah="08"
-		Case 8
-			mah="09"
-		Case 9
-			mah="10"
-		Case 10
-			mah="11"
-		Case 11
-			mah="12"
-			
-	End Select
-	
+	mah=convert_add(sp_mah.SelectedIndex+1)
 	
 	
 	Dim list1 As List
@@ -145,6 +200,7 @@ Sub fill_list
 		
 		cusListV_data.Add(p,list2(0))
 		lbl_edit_item.Tag=list2(0)
+		lbl_del_item.Tag=list2(0)
 		
 		lbl_date_item.Text=list2(1)
 		lbl_vorod_item.Text=list2(2)
@@ -175,18 +231,24 @@ End Sub
 
 
 Private Sub lbl_save_Click
+	Try
+		date_generat
+		Dim res_H_M As List =myFunc.time_show2(date_str,lbl_vorod_time.Text,lbl_khoroj_time.Text)
 	
-	Dim res_H_M As List =myFunc.time_show2(et_date.Text,lbl_vorod_time.Text,lbl_khoroj_time.Text)
+		
+		myFunc.add_taradod(date_str,lbl_vorod_time.Text,lbl_khoroj_time.Text,res_H_M.Get(0),res_H_M.Get(1),et_tozih.Text,0)
+		fill_list
+		et_tozih.Text=""
+		ToastMessageShow("تردد ذخیره شد",False)
+	Catch
+		ToastMessageShow("خطا در ثبت",False)
+		Log(LastException)
+	End Try
 	
-	
-	myFunc.add_taradod(et_date.Text,lbl_vorod_time.Text,lbl_khoroj_time.Text,res_H_M.Get(0),res_H_M.Get(1),et_tozih.Text,0)
-	fill_list
-	et_tozih.Text=""
-	ToastMessageShow("تردد ذخیره شد",False)
 End Sub
 
 Sub show_tim_lbl1
-	Dim res_H_M As List =myFunc.time_show2(et_date.Text,lbl_vorod_time.Text,lbl_khoroj_time.Text)
+	Dim res_H_M As List =myFunc.time_show2(date_str,lbl_vorod_time.Text,lbl_khoroj_time.Text)
 	lbl_show_time.Text=" ساعت "&res_H_M.Get(0)&" و "&res_H_M.Get(1)&" دقیقه "
 End Sub
 
@@ -256,29 +318,23 @@ Private Sub pan_all_edit_Click
 End Sub
 
 Private Sub lbl_save_edit_Click
-	Dim res_H_M As List =myFunc.time_show2(et_date_edit.Text,lbl_vorod_time_edit.Text,lbl_khoroj_time_edit.Text)
-	
-	
-	myFunc.edit_taradod(current_id,et_date_edit.Text,lbl_vorod_time_edit.Text,lbl_khoroj_time_edit.Text,res_H_M.Get(0),res_H_M.Get(1),et_tozih_edit.Text,1)
-	
-	pan_all_edit.Visible=False
-	fill_list
-	ToastMessageShow("تردد ویرایش شد",False)
-End Sub
-
-Private Sub lbl_delete_edit_Click
-	Dim result As Int
-	result = Msgbox2("آیا این مورد حذف شود؟", "حذف", "بله", "", "خیر", Null)
-	If result = DialogResponse.Positive Then 
-		myFunc.delete_taradod(current_id)
+	Try
+		Dim res_H_M As List =myFunc.time_show2	(et_date_edit.Text,lbl_vorod_time_edit.Text,lbl_khoroj_time_edit.Text)
+		
+		
+		myFunc.edit_taradod(current_id,et_date_edit.Text,lbl_vorod_time_edit.Text,lbl_khoroj_time_edit.Text,res_H_M.Get(0),res_H_M.Get(1),et_tozih_edit.Text,1)
+		
 		pan_all_edit.Visible=False
 		fill_list
-	End If
-	
+		ToastMessageShow("تردد ویرایش شد",False)
+	Catch
+		ToastMessageShow("خطا در ویرایش ",False)
+		Log(LastException)
+	End Try
 	
 End Sub
 
-
+ 
 
 Private Sub lbl_vorod_time_edit_Click
 	
@@ -354,4 +410,37 @@ End Sub
 
 Private Sub lbl_show_list_Click
 	fill_list
+End Sub
+
+Private Sub lbl_del_item_Click
+	Dim lb As Label=Sender
+	
+	current_id=lb.Tag
+	
+	Dim result As Int
+	result = Msgbox2("آیا این مورد حذف شود؟", "حذف", "بله", "", "خیر", Null)
+	If result = DialogResponse.Positive Then
+		myFunc.delete_taradod(current_id)
+		pan_all_edit.Visible=False
+		fill_list
+	End If
+	
+End Sub
+
+Private Sub lbl_cancel_edit_Click
+	pan_all_edit.Visible=False
+End Sub
+
+
+Sub Activity_KeyPress (KeyCode As Int) As Boolean
+	If KeyCode = KeyCodes.KEYCODE_BACK Then   
+		If(pan_all_edit.Visible=True)Then
+			pan_all_edit.Visible=False
+			Else
+				ExitApplication                        ' Hardware-Zurück Taste gedrückt
+		End If
+		Return True                                             ' Hardware-Zurück Taste deaktiviert
+	Else
+		Return False
+	End If
 End Sub

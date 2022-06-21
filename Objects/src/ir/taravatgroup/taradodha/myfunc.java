@@ -15,7 +15,6 @@ public b4a.example.dateutils _dateutils = null;
 public ir.taravatgroup.taradodha.main _main = null;
 public ir.taravatgroup.taradodha.starter _starter = null;
 public ir.taravatgroup.taradodha.add_activity _add_activity = null;
-public ir.taravatgroup.taradodha.splash_activity _splash_activity = null;
 public static boolean  _add_taradod(anywheresoftware.b4a.BA _ba,String _date,String _vorod,String _khoroj,int _h,int _m,String _tozih,int _state) throws Exception{
  //BA.debugLineNum = 65;BA.debugLine="Sub add_taradod(date As String,vorod As String,kho";
  //BA.debugLineNum = 66;BA.debugLine="connection_sql";

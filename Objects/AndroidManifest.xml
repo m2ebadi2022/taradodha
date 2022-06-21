@@ -46,13 +46,5 @@
 			android:screenOrientation="unspecified"
 			android:exported="true">
 		</activity>
-		<activity
-			android:windowSoftInputMode="stateHidden"
-			android:launchMode="singleTop"
-			android:name=".splash_activity"
-			android:label="ثبت ترددها"
-			android:screenOrientation="unspecified"
-			android:exported="true">
-		</activity>
 	</application>
 </manifest>
