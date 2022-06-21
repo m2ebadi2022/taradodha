@@ -10,6 +10,6 @@ ModuleClosedNodes0=
 ModuleClosedNodes1=
 ModuleClosedNodes2=
 ModuleClosedNodes3=1
-NavigationStack=Starter,Service_Create,14,0,add_activity,Globals,55,2,add_activity,lbl_share_Click,510,6,add_activity,fill_list,184,6,add_activity,Activity_Create,61,6,add_activity,pan_all_edit_Click,375,0,add_activity,save_temp,458,0,add_activity,lbl_save_edit_Click,388,0,Visual Designer,add_layout.bal,-100,6,add_activity,lbl_save_Click,301,0
+NavigationStack=Starter,Service_Create,14,0,add_activity,lbl_share_Click,510,6,add_activity,fill_list,184,6,add_activity,Activity_Create,61,6,add_activity,pan_all_edit_Click,375,0,add_activity,save_temp,458,0,add_activity,lbl_save_edit_Click,388,0,add_activity,lbl_save_Click,301,0,Visual Designer,add_layout.bal,-100,6,add_activity,Globals,51,2
 SelectedBuild=0
 VisibleModules=3,1,2
