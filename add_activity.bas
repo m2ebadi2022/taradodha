@@ -12,7 +12,7 @@ Version=11.5
 Sub Process_Globals
 	'These global variables will be declared once when the application starts.
 	'These variables can be accessed from all modules.
-Dim vb As PhoneVibrate
+
 End Sub
 
 Sub Globals
@@ -138,13 +138,23 @@ Sub Activity_Create(FirstTime As Boolean)
 	dialog_tim.Is24Hours=True
 	
 	If(File.Exists(File.DirInternal,"save_temp"))Then
-		Dim ls_temp_tim As List
-		ls_temp_tim.Initialize
-		ls_temp_tim=File.ReadList(File.DirInternal,"save_temp")
 		
-		lbl_vorod_time.Text=ls_temp_tim.Get(0)
-		lbl_khoroj_time.Text=ls_temp_tim.Get(1)
-		show_tim_lbl1
+		Try
+			Dim ls_temp_tim As List
+			ls_temp_tim.Initialize
+			ls_temp_tim=File.ReadList(File.DirInternal,"save_temp")
+			lbl_vorod_time.Text=ls_temp_tim.Get(0)
+			lbl_khoroj_time.Text=ls_temp_tim.Get(1)
+			et_tozih.Text=ls_temp_tim.Get(2)
+			show_tim_lbl1
+		Catch
+			
+			Log(LastException)
+		End Try
+		
+		
+		
+		
 	End If
 	
 End Sub
@@ -305,7 +315,7 @@ Private Sub lbl_save_Click
 		fill_list
 		et_tozih.Text=""
 		ToastMessageShow("تردد ذخیره شد",False)
-		vb.Vibrate(300)
+	
 	Catch
 		ToastMessageShow("خطا در ثبت",False)
 		Log(LastException)
@@ -462,9 +472,10 @@ Sub save_temp
 	
 	ls_save.Add(lbl_vorod_time.Text)
 	ls_save.Add(lbl_khoroj_time.Text)
+	ls_save.Add(et_tozih.Text)
 	
 	File.WriteList(File.DirInternal,"save_temp",ls_save)
-	vb.Vibrate(400)
+	
 End Sub
 
 Private Sub lbl_khoroj_time_Click
@@ -542,3 +553,12 @@ Private Sub lbl_share_Click
 	StartActivity(in)
 End Sub
 
+
+
+Private Sub et_tozih_TextChanged (Old As String, New As String)
+	save_temp
+End Sub
+
+Private Sub sp_mah_ItemClick (Position As Int, Value As Object)
+	lbl_show_list_Click
+End Sub
